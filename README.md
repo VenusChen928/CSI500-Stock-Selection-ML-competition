@@ -48,17 +48,21 @@ python validate_submission.py submissions/portfolio.csv
 
 ## Final Model Route
 
-`stage2_baseline_guard_ensemble.py` is the final compact submission route.  It
-uses only data up to the requested `as_of` date:
+`stage2_baseline_guard_ensemble.py` is the final route.  It uses only data up
+to the requested `as_of` date and combines:
 
-- build OHLCV features from `features.py`;
-- train the official-style XGBoost baseline from `baseline_xgboost.py`;
-- compute as-of-observable market regime statistics;
-- choose the baseline top-k and rank-weighted portfolio.
+- official XGBoost-style baseline fallback;
+- LightGBM/XGBoost tree consensus;
+- weekly alpha overlay;
+- full-week cycle tree route;
+- as-of-observable regime guards.
 
-For `as_of=20260508`, the guard selects 30 rank-weighted names.  A final top-k
-sanity check kept top30 because the closest historical baseline-routed windows
-showed better mean and minimum excess than top35/top40/top50/top60.
+The guard chooses the safest route for the current market regime and does not
+read realized future returns or cached historical score results.  For
+`as_of=20260508`, the route falls back to the official-style XGBoost baseline
+with 30 rank-weighted names.  A final top-k sanity check kept top30 because the
+closest historical baseline-guard windows showed better mean and minimum excess
+than top35/top40/top50/top60.
 
 ## Validation Commands
 
@@ -68,7 +72,26 @@ Run official format validation:
 python validate_submission.py submissions/portfolio.csv
 ```
 
-Leakage-audit and full-week validation evidence is stored under
-`submissions/stage2/final_report_materials/`.
+Run a leakage audit:
+
+```bash
+python stage2_leakage_audit.py \
+  --as-of 20260109 20260227 20260313 20260327 20260410 20260508 \
+  --models baseline_guard_adaptive \
+  --out submissions/stage2/final_report_materials/05_final_leakage_audit_dynamic.csv \
+  --static-out submissions/stage2/final_report_materials/06_final_leakage_audit_static_scan.csv
+```
+
+Run full-week comparison:
+
+```bash
+python stage2_backtest_5day.py \
+  --models baseline_xgb baseline_guard_adaptive \
+  --full-week-only \
+  --windows 12 \
+  --jobs 4 \
+  --out-dir submissions/stage2/backtests/final_check \
+  --summary-out submissions/stage2/final_report_materials/02_full_week_12_window_performance_summary.csv
+```
 
 Historical reports are archived under `history/stage2/reports_archive/`.

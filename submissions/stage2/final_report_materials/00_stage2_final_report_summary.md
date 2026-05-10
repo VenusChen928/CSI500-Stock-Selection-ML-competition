@@ -14,25 +14,28 @@
 
 ## Model Design
 
-The final root-level route is a compact baseline-guarded XGBoost generator.  It
-first computes as-of-observable market regime statistics, then trains the
-official-style XGBoost baseline with an embargoed validation split and chooses a
-rank-weighted top-k portfolio.
+The final route is a baseline-guarded Stage2 ensemble.  It first computes
+as-of-observable market regime statistics, then chooses among:
+
+- official-style XGBoost baseline fallback;
+- LightGBM/XGBoost tree consensus;
+- weekly alpha overlay;
+- full-week cycle tree route;
+- broad defensive tilt.
 
 For `2026-05-08`, the short- and medium-term market regime was overheated with
-high breadth, so the guard selected 30 rank-weighted names.  This is
-deliberately conservative: earlier ensemble and LSTM experiments remain
-archived under `history/`, while the final submitted code path is kept small and
-easy to audit.
+high breadth, so the guard selected the official-style XGBoost baseline route
+with 30 rank-weighted names.  This is deliberately conservative: the strongest
+more complex routes were useful in other regimes, but this regime favored the
+baseline fallback in leakage-safe historical checks.
 
 ## Validation Result
 
-Historical full-week 12-window comparison for the promoted baseline-guard
-family:
+Full-week 12-window comparison:
 
 | model | mean excess | min excess | max excess | negative windows |
 |---|---:|---:|---:|---:|
-| baseline-guarded route family | +4.001% | +0.907% | +12.308% | 0 / 12 |
+| baseline-guarded ensemble | +4.001% | +0.907% | +12.308% | 0 / 12 |
 | original XGBoost baseline | +0.527% | -1.221% | +2.916% | 5 / 12 |
 
 Detailed numbers are in:
