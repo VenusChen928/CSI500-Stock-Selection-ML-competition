@@ -1042,8 +1042,8 @@ def main() -> int:
         help="Use only complete Monday-Friday windows with no weekend/holiday gap inside the five trading days.",
     )
     parser.add_argument("--open-dir", default=str(ROOT / "history" / "common" / "data_unused" / "open"))
-    parser.add_argument("--out-dir", default=str(ROOT / "submissions" / "stage2" / "backtests" / "baselines" / "stage2_5day_current"))
-    parser.add_argument("--summary-out", default=str(ROOT / "submissions" / "stage2" / "final_report_materials" / "stage2_5day_current_summary.csv"))
+    parser.add_argument("--out-dir", default=str(ROOT / "stage2_report" / "backtests" / "baselines" / "stage2_5day_current"))
+    parser.add_argument("--summary-out", default=str(ROOT / "stage2_report" / "final_report_materials" / "stage2_5day_current_summary.csv"))
     parser.add_argument("--skip-existing", action="store_true")
     parser.add_argument("--timeout", type=int, default=900)
     parser.add_argument(

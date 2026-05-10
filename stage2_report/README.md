@@ -1,7 +1,8 @@
-# Stage2 Submissions Layout
+# Stage2 Report Layout
 
-This folder contains active Stage2 supporting artifacts.  The actual portfolio
-to upload is `submissions/portfolio.csv`.
+This folder contains active Stage2 report materials and reproducibility
+artifacts.  The actual portfolio to upload is the root-level
+`stage2_final_portfolio.csv`.
 
 ## Active Folders
 

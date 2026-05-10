@@ -109,7 +109,7 @@ def main() -> int:
     parser.add_argument("--windows", type=int, default=12)
     parser.add_argument("--step", type=int, default=5)
     parser.add_argument("--as-of", nargs="*", default=None)
-    parser.add_argument("--out", default="submissions/stage2/final_report_materials/stage2_validation_audit.csv")
+    parser.add_argument("--out", default="stage2_report/final_report_materials/stage2_validation_audit.csv")
     args = parser.parse_args()
 
     prices = pd.read_parquet(args.prices)

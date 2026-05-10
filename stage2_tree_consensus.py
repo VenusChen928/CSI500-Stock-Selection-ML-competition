@@ -464,7 +464,7 @@ def main() -> int:
     parser.add_argument("--prices", default=str(DATA_DIR / "prices.parquet"))
     parser.add_argument("--index", default=str(DATA_DIR / "index.parquet"))
     parser.add_argument("--as-of", default=None)
-    parser.add_argument("--out", default="submissions/stage2/route_outputs/stage2_tree_consensus.csv")
+    parser.add_argument("--out", default="stage2_report/route_outputs/stage2_tree_consensus.csv")
     parser.add_argument("--meta-out", default=None)
     parser.add_argument("--top-k", type=int, default=DEFAULT_TOP_K)
     parser.add_argument("--alpha-xgb", type=float, default=DEFAULT_ALPHA_XGB)

@@ -221,7 +221,7 @@ The final pipeline includes several self-tests.
 | `validate_submission.py` | checks CSV format, stock count, non-negative weights, sum-to-one, max-weight cap | passed |
 | dynamic leakage audit | compares full-data generation with physically truncated `date <= as_of` generation | passed |
 | static scan | searches active code for leakage-prone references and cache/report dependencies | reviewed |
-| regeneration check | regenerates final portfolio from script and compares against `submissions/portfolio.csv` | exact match |
+| regeneration check | regenerates final portfolio from script and compares against `stage2_final_portfolio.csv` | exact match |
 | py_compile check | ensures active model and validation scripts import cleanly | passed |
 | canonical score script | scores all backtest portfolios using `score_submission.py` logic | used for final tables |
 
@@ -250,14 +250,14 @@ Generate the final portfolio:
 python stage2_baseline_guard_ensemble.py \
   --as-of 20260508 \
   --baseline-top-k 0 \
-  --out submissions/portfolio.csv \
-  --meta-out submissions/stage2/final_report_materials/01_final_portfolio_metadata.csv
+  --out stage2_final_portfolio.csv \
+  --meta-out stage2_report/final_report_materials/01_final_portfolio_metadata.csv
 ```
 
 Validate the final CSV:
 
 ```bash
-python validate_submission.py submissions/portfolio.csv
+python validate_submission.py stage2_final_portfolio.csv
 ```
 
 Run the leakage audit:
@@ -266,8 +266,8 @@ Run the leakage audit:
 python tools/stage2_validation/stage2_leakage_audit.py \
   --as-of 20260123 20260320 20260508 \
   --models baseline_guard_adaptive \
-  --out submissions/stage2/final_report_materials/05_final_leakage_audit_dynamic.csv \
-  --static-out submissions/stage2/final_report_materials/06_final_leakage_audit_static_scan.csv
+  --out stage2_report/final_report_materials/05_final_leakage_audit_dynamic.csv \
+  --static-out stage2_report/final_report_materials/06_final_leakage_audit_static_scan.csv
 ```
 
 Run the full-week comparison:
@@ -278,6 +278,6 @@ python tools/stage2_validation/stage2_backtest_5day.py \
   --full-week-only \
   --windows 12 \
   --jobs 4 \
-  --out-dir submissions/stage2/backtests/final_check \
-  --summary-out submissions/stage2/final_report_materials/02_full_week_12_window_performance_summary.csv
+  --out-dir stage2_report/backtests/final_check \
+  --summary-out stage2_report/final_report_materials/02_full_week_12_window_performance_summary.csv
 ```

@@ -875,7 +875,7 @@ def main() -> int:
     parser.add_argument("--prices", default=str(DATA_DIR / "prices.parquet"))
     parser.add_argument("--index", default=str(DATA_DIR / "index.parquet"))
     parser.add_argument("--as-of", default=None)
-    parser.add_argument("--out", default="submissions/stage2/route_outputs/stage2_hybrid_gate.csv")
+    parser.add_argument("--out", default="stage2_report/route_outputs/stage2_hybrid_gate.csv")
     parser.add_argument("--meta-out", default=None)
     parser.add_argument("--force-route", choices=["auto", "tree", "lstm", "regularized"], default="auto")
     parser.add_argument("--tree-feature-set", choices=["auto", "core", "quality"], default="auto")

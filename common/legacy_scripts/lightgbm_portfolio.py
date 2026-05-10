@@ -178,7 +178,7 @@ def main():
     parser.add_argument("--prices", default=str(DATA_DIR / "prices.parquet"))
     parser.add_argument("--index", default=str(DATA_DIR / "index.parquet"))
     parser.add_argument("--as-of", default=None, help="YYYYMMDD; defaults to latest full 5-day as-of")
-    parser.add_argument("--out", default="submissions/lightgbm_portfolio.csv")
+    parser.add_argument("--out", default="stage2_report/route_outputs/lightgbm_portfolio.csv")
     parser.add_argument("--lookback-days", type=int, default=DEFAULT_LOOKBACK_DAYS)
     parser.add_argument("--val-days", type=int, default=DEFAULT_VAL_DAYS)
     parser.add_argument("--learning-rate", type=float, default=0.035)

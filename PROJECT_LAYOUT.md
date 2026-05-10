@@ -29,8 +29,8 @@ live under `tools/`, and historical experiments are archived under `history/`.
 ## Active Directories
 
 - `data/`: current official data cache used by the final generator.
-- `submissions/portfolio.csv`: the only final Stage2 upload candidate.
-- `submissions/stage2/final_report_materials/`: final metadata, validation,
+- `stage2_final_portfolio.csv`: the only final Stage2 upload candidate.
+- `stage2_report/final_report_materials/`: final metadata, validation,
   leakage, performance, and portfolio-shape evidence for the written report.
 - `common/`: LightGBM/XGBoost helper scripts imported by the active tree
   consensus route.
@@ -49,10 +49,10 @@ conda activate mlcomp-sp26
 python stage2_baseline_guard_ensemble.py \
   --as-of 20260508 \
   --baseline-top-k 0 \
-  --out submissions/portfolio.csv \
-  --meta-out submissions/stage2/final_report_materials/01_final_portfolio_metadata.csv
-python validate_submission.py submissions/portfolio.csv
+  --out stage2_final_portfolio.csv \
+  --meta-out stage2_report/final_report_materials/01_final_portfolio_metadata.csv
+python validate_submission.py stage2_final_portfolio.csv
 ```
 
-`submissions/portfolio.csv` is the only active portfolio CSV.  Older duplicates
+`stage2_final_portfolio.csv` is the only active portfolio CSV.  Older duplicates
 are archived under `history/stage2/submissions/final_duplicate_portfolios_20260510/`.

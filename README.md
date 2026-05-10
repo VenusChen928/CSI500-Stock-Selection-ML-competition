@@ -5,7 +5,7 @@ This repository is organized for the Stage2 five-trading-day submission.
 Upload exactly this file:
 
 ```text
-submissions/portfolio.csv
+stage2_final_portfolio.csv
 ```
 
 All duplicate portfolio CSVs were moved to `history/` so the final upload file
@@ -41,9 +41,9 @@ stock weight `0.10`.
 python stage2_baseline_guard_ensemble.py \
   --as-of 20260508 \
   --baseline-top-k 0 \
-  --out submissions/portfolio.csv \
-  --meta-out submissions/stage2/final_report_materials/01_final_portfolio_metadata.csv
-python validate_submission.py submissions/portfolio.csv
+  --out stage2_final_portfolio.csv \
+  --meta-out stage2_report/final_report_materials/01_final_portfolio_metadata.csv
+python validate_submission.py stage2_final_portfolio.csv
 ```
 
 ## Final Model Route
@@ -79,7 +79,7 @@ baseline_xgb:            mean excess +0.527%, min -1.221%, 5 negative windows / 
 Run official format validation:
 
 ```bash
-python validate_submission.py submissions/portfolio.csv
+python validate_submission.py stage2_final_portfolio.csv
 ```
 
 Run a leakage audit:
@@ -88,8 +88,8 @@ Run a leakage audit:
 python tools/stage2_validation/stage2_leakage_audit.py \
   --as-of 20260109 20260227 20260313 20260327 20260410 20260508 \
   --models baseline_guard_adaptive \
-  --out submissions/stage2/final_report_materials/05_final_leakage_audit_dynamic.csv \
-  --static-out submissions/stage2/final_report_materials/06_final_leakage_audit_static_scan.csv
+  --out stage2_report/final_report_materials/05_final_leakage_audit_dynamic.csv \
+  --static-out stage2_report/final_report_materials/06_final_leakage_audit_static_scan.csv
 ```
 
 Run full-week comparison:
@@ -100,8 +100,8 @@ python tools/stage2_validation/stage2_backtest_5day.py \
   --full-week-only \
   --windows 12 \
   --jobs 4 \
-  --out-dir submissions/stage2/backtests/final_check \
-  --summary-out submissions/stage2/final_report_materials/02_full_week_12_window_performance_summary.csv
+  --out-dir stage2_report/backtests/final_check \
+  --summary-out stage2_report/final_report_materials/02_full_week_12_window_performance_summary.csv
 ```
 
 Historical reports are archived under `history/stage2/reports_archive/`.
@@ -111,7 +111,7 @@ Historical reports are archived under `history/stage2/reports_archive/`.
 The final write-up materials are organized in:
 
 ```text
-submissions/stage2/final_report_materials/
+stage2_report/final_report_materials/
 ```
 
 Start with `00_stage2_final_report_summary.md` for the main narrative and

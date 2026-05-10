@@ -8,7 +8,7 @@ It is intentionally small and ordered by report-writing flow.
 - `00_stage2_final_report_summary.md`: full Stage2 report narrative, including
   objective, data, features, models, validation, final route, and self-tests.
 - `01_final_portfolio_metadata.csv`: final portfolio route and training
-  metadata for `submissions/portfolio.csv`.
+  metadata for `stage2_final_portfolio.csv`.
 - `02_full_week_12_window_performance_summary.csv`: aggregate 12-window
   performance versus the original XGBoost baseline.
 - `03_full_week_12_window_performance_detail.csv`: per-window performance

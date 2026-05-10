@@ -108,7 +108,7 @@ def static_source_scan() -> pd.DataFrame:
     ]
     patterns = [
         "score_submission",
-        "submissions/stage2/reports",
+        "stage2_report/reports",
         "current_best",
         "archive_pre",
         "cache_dir",
@@ -139,8 +139,8 @@ def main() -> int:
         nargs="+",
         default=["weekly_alpha_auto", "weekly_alpha_floor", "weekly_cycle_tree", "weekly_consensus", "baseline_guard_adaptive"],
     )
-    parser.add_argument("--out", default="submissions/stage2/final_report_materials/05_final_leakage_audit_dynamic.csv")
-    parser.add_argument("--static-out", default="submissions/stage2/final_report_materials/06_final_leakage_audit_static_scan.csv")
+    parser.add_argument("--out", default="stage2_report/final_report_materials/05_final_leakage_audit_dynamic.csv")
+    parser.add_argument("--static-out", default="stage2_report/final_report_materials/06_final_leakage_audit_static_scan.csv")
     args = parser.parse_args()
 
     prices = pd.read_parquet(args.prices)

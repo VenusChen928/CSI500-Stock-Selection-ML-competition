@@ -1,6 +1,6 @@
 file,pattern,count
 stage2_baseline_guard_ensemble.py,score_submission,0
-stage2_baseline_guard_ensemble.py,submissions/stage2/reports,0
+stage2_baseline_guard_ensemble.py,stage2_report/reports,0
 stage2_baseline_guard_ensemble.py,current_best,0
 stage2_baseline_guard_ensemble.py,archive_pre,0
 stage2_baseline_guard_ensemble.py,cache_dir,9
@@ -8,7 +8,7 @@ stage2_baseline_guard_ensemble.py,meta_cache_dir,1
 stage2_baseline_guard_ensemble.py,shift(-,0
 stage2_baseline_guard_ensemble.py,target_excess,0
 stage2_weekly_consensus_ensemble.py,score_submission,0
-stage2_weekly_consensus_ensemble.py,submissions/stage2/reports,0
+stage2_weekly_consensus_ensemble.py,stage2_report/reports,0
 stage2_weekly_consensus_ensemble.py,current_best,0
 stage2_weekly_consensus_ensemble.py,archive_pre,0
 stage2_weekly_consensus_ensemble.py,cache_dir,14
@@ -16,7 +16,7 @@ stage2_weekly_consensus_ensemble.py,meta_cache_dir,1
 stage2_weekly_consensus_ensemble.py,shift(-,0
 stage2_weekly_consensus_ensemble.py,target_excess,0
 stage2_weekly_cycle_tree.py,score_submission,0
-stage2_weekly_cycle_tree.py,submissions/stage2/reports,0
+stage2_weekly_cycle_tree.py,stage2_report/reports,0
 stage2_weekly_cycle_tree.py,current_best,0
 stage2_weekly_cycle_tree.py,archive_pre,0
 stage2_weekly_cycle_tree.py,cache_dir,0
@@ -24,7 +24,7 @@ stage2_weekly_cycle_tree.py,meta_cache_dir,0
 stage2_weekly_cycle_tree.py,shift(-,0
 stage2_weekly_cycle_tree.py,target_excess,2
 stage2_weekly_alpha_overlay.py,score_submission,0
-stage2_weekly_alpha_overlay.py,submissions/stage2/reports,0
+stage2_weekly_alpha_overlay.py,stage2_report/reports,0
 stage2_weekly_alpha_overlay.py,current_best,0
 stage2_weekly_alpha_overlay.py,archive_pre,0
 stage2_weekly_alpha_overlay.py,cache_dir,11
@@ -32,7 +32,7 @@ stage2_weekly_alpha_overlay.py,meta_cache_dir,11
 stage2_weekly_alpha_overlay.py,shift(-,0
 stage2_weekly_alpha_overlay.py,target_excess,0
 stage2_meta_portfolio_ensemble.py,score_submission,0
-stage2_meta_portfolio_ensemble.py,submissions/stage2/reports,0
+stage2_meta_portfolio_ensemble.py,stage2_report/reports,0
 stage2_meta_portfolio_ensemble.py,current_best,0
 stage2_meta_portfolio_ensemble.py,archive_pre,0
 stage2_meta_portfolio_ensemble.py,cache_dir,0
@@ -40,7 +40,7 @@ stage2_meta_portfolio_ensemble.py,meta_cache_dir,0
 stage2_meta_portfolio_ensemble.py,shift(-,0
 stage2_meta_portfolio_ensemble.py,target_excess,0
 stage2_hybrid_gate.py,score_submission,0
-stage2_hybrid_gate.py,submissions/stage2/reports,0
+stage2_hybrid_gate.py,stage2_report/reports,0
 stage2_hybrid_gate.py,current_best,0
 stage2_hybrid_gate.py,archive_pre,0
 stage2_hybrid_gate.py,cache_dir,0
@@ -48,7 +48,7 @@ stage2_hybrid_gate.py,meta_cache_dir,0
 stage2_hybrid_gate.py,shift(-,0
 stage2_hybrid_gate.py,target_excess,0
 stage2_tree_consensus.py,score_submission,0
-stage2_tree_consensus.py,submissions/stage2/reports,0
+stage2_tree_consensus.py,stage2_report/reports,0
 stage2_tree_consensus.py,current_best,0
 stage2_tree_consensus.py,archive_pre,0
 stage2_tree_consensus.py,cache_dir,0
@@ -56,7 +56,7 @@ stage2_tree_consensus.py,meta_cache_dir,0
 stage2_tree_consensus.py,shift(-,0
 stage2_tree_consensus.py,target_excess,0
 features.py,score_submission,0
-features.py,submissions/stage2/reports,0
+features.py,stage2_report/reports,0
 features.py,current_best,0
 features.py,archive_pre,0
 features.py,cache_dir,0

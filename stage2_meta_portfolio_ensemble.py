@@ -214,7 +214,7 @@ def main() -> int:
         action="store_true",
         help="Use the supplied --rank-power uniformly instead of regime-specific confidence concentration.",
     )
-    parser.add_argument("--out", default="submissions/stage2/route_outputs/stage2_meta_portfolio_ensemble.csv")
+    parser.add_argument("--out", default="stage2_report/route_outputs/stage2_meta_portfolio_ensemble.csv")
     parser.add_argument("--meta-out", default=None)
     args = parser.parse_args()
 

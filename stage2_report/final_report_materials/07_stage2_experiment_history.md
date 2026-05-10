@@ -154,7 +154,7 @@ Before treating a route as final, we require:
 
 | check | command or file | status |
 |---|---|---|
-| format validation | `python validate_submission.py submissions/portfolio.csv` | passed |
+| format validation | `python validate_submission.py stage2_final_portfolio.csv` | passed |
 | portfolio regeneration | `stage2_baseline_guard_ensemble.py --as-of 20260508` | exact match |
 | dynamic leakage audit | `05_final_leakage_audit_dynamic.csv` | passed |
 | static scan | `06_final_leakage_audit_static_scan.csv` | reviewed |

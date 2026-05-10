@@ -397,8 +397,8 @@ def main() -> int:
     parser.add_argument("--weekly-top-k", type=int, default=30)
     parser.add_argument("--weekly-rank-power", type=float, default=6.0)
     parser.add_argument("--weekly-max-weight", type=float, default=0.095)
-    parser.add_argument("--out", default="submissions/portfolio.csv")
-    parser.add_argument("--meta-out", default="submissions/stage2/final_report_materials/01_final_portfolio_metadata.csv")
+    parser.add_argument("--out", default="stage2_final_portfolio.csv")
+    parser.add_argument("--meta-out", default="stage2_report/final_report_materials/01_final_portfolio_metadata.csv")
     args = parser.parse_args()
 
     prices = pd.read_parquet(args.prices)

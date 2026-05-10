@@ -28,8 +28,7 @@ MIN_STOCKS = 30
 COMPETITION_MAX_WEIGHT = 0.10
 DEFAULT_META_CACHE = (
     ROOT
-    / "submissions"
-    / "stage2"
+    / "stage2_report"
     / "backtests"
     / "full_week"
     / "stage2_fullweek_meta_12w_20260510"
@@ -326,7 +325,7 @@ def main() -> int:
         help="Optional directory containing meta_portfolio_ensemble_YYYYMMDD.csv. Defaults to live no-cache generation.",
     )
     parser.add_argument("--base-csv", default=None)
-    parser.add_argument("--out", default="submissions/stage2/route_outputs/stage2_weekly_alpha_overlay.csv")
+    parser.add_argument("--out", default="stage2_report/route_outputs/stage2_weekly_alpha_overlay.csv")
     parser.add_argument("--meta-out", default=None)
     parser.add_argument("--diagnostics-out", default=None)
     args = parser.parse_args()

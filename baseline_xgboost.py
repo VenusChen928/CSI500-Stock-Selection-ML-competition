@@ -14,7 +14,7 @@ Usage
 -----
   python baseline_xgboost.py                       # predict from latest data
   python baseline_xgboost.py --as-of 20260503      # predict as of a given date
-  python baseline_xgboost.py --top-k 50 --out submissions/week1.csv
+  python baseline_xgboost.py --top-k 50 --out stage2_report/route_outputs/baseline_xgb.csv
 """
 from __future__ import annotations
 

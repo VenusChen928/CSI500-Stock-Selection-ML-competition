@@ -569,7 +569,7 @@ def main() -> int:
     parser.add_argument("--prices", default=str(DATA_DIR / "prices.parquet"))
     parser.add_argument("--index", default=str(DATA_DIR / "index.parquet"))
     parser.add_argument("--as-of", default=None)
-    parser.add_argument("--out", default="submissions/stage2/route_outputs/stage2_regularized_consensus.csv")
+    parser.add_argument("--out", default="stage2_report/route_outputs/stage2_regularized_consensus.csv")
     parser.add_argument("--feature-report-out", default=None)
     parser.add_argument("--shape-report-out", default=None)
     parser.add_argument("--lookback-days", type=int, default=DEFAULT_LOOKBACK_DAYS)

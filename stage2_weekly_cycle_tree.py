@@ -394,7 +394,7 @@ def main() -> int:
     parser.add_argument("--fullweek-boost", type=float, default=0.20)
     parser.add_argument("--model-set", choices=["lgb_xgb", "cat", "all"], default="lgb_xgb")
     parser.add_argument("--alpha-blend", type=float, default=0.25)
-    parser.add_argument("--out", default="submissions/stage2/route_outputs/stage2_weekly_cycle_tree.csv")
+    parser.add_argument("--out", default="stage2_report/route_outputs/stage2_weekly_cycle_tree.csv")
     parser.add_argument("--meta-out", default=None)
     parser.add_argument("--diagnostics-out", default=None)
     args = parser.parse_args()

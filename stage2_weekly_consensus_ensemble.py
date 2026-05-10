@@ -181,7 +181,7 @@ def main() -> int:
     parser.add_argument("--top-k", type=int, default=30)
     parser.add_argument("--rank-power", type=float, default=6.0)
     parser.add_argument("--max-weight", type=float, default=MAX_WEIGHT)
-    parser.add_argument("--out", default="submissions/stage2/route_outputs/stage2_weekly_consensus_ensemble.csv")
+    parser.add_argument("--out", default="stage2_report/route_outputs/stage2_weekly_consensus_ensemble.csv")
     parser.add_argument("--meta-out", default=None)
     args = parser.parse_args()
 
