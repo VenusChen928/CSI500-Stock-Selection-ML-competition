@@ -1,9 +1,9 @@
 # Project Layout
 
-This repository is now trimmed for the Stage2 submission.  The root directory
-contains active data, feature, model, scoring, and validation scripts.  The
-single upload CSV lives at `submissions/portfolio.csv`.  Historical experiments
-are archived under `history/`.
+This repository is trimmed for the Stage2 submission.  The root directory keeps
+the complete model chain required to build the final portfolio, plus official
+download/scoring/format validation scripts.  Multi-window research utilities
+live under `tools/`, and historical experiments are archived under `history/`.
 
 ## Root
 
@@ -11,27 +11,20 @@ are archived under `history/`.
 - `download_data.py`: official data updater.
 - `features.py`: shared OHLCV feature engineering.
 - `baseline_xgboost.py`: official-style baseline and shared portfolio helpers.
-- `lstm_rank_weight.py`: retained sequence learner used by active historical
-  route code.
+- `lstm_rank_weight.py`: sequence learner used by the active hybrid fallback
+  chain.
 - `stage2_baseline_guard_ensemble.py`: current final Stage2 generator.
 - `stage2_weekly_consensus_ensemble.py`: weekly consensus sub-route.
 - `stage2_weekly_alpha_overlay.py`: weekly alpha overlay sub-route.
 - `stage2_weekly_cycle_tree.py`: full-week cycle tree sub-route.
 - `stage2_tree_consensus.py`: LightGBM/XGBoost tree consensus sub-route.
-- `stage2_hybrid_gate.py`: earlier active hybrid route kept for reproducible
-  comparison.
-- `stage2_meta_portfolio_ensemble.py`: earlier active meta route kept for
-  reproducible comparison.
-- `stage2_regularized_consensus.py`: regularized challenger route retained for
-  ablations.
+- `stage2_hybrid_gate.py`: hybrid fallback used by the meta route.
+- `stage2_meta_portfolio_ensemble.py`: meta portfolio base used by weekly
+  alpha when no cache is supplied.
+- `stage2_regularized_consensus.py`: regularized tree/CatBoost route used by
+  the hybrid fallback.
 - `score_submission.py`: realized-return scoring script.
 - `validate_submission.py`: official submission format/rule validator.
-- `stage2_backtest_5day.py`: slower but comprehensive five-trading-day
-  multi-window evaluator.
-- `stage2_fast_backtest_numpy.py`: faster parallel evaluator for repeated
-  Stage2 checks.
-- `stage2_leakage_audit.py`: full-data versus as-of-truncated leakage audit.
-- `stage2_validation_audit.py`: additional route validation/audit utility.
 
 ## Active Directories
 
@@ -39,7 +32,10 @@ are archived under `history/`.
 - `submissions/portfolio.csv`: the only final Stage2 upload candidate.
 - `submissions/stage2/final_report_materials/`: final metadata, validation,
   leakage, performance, and portfolio-shape evidence for the written report.
-- `common/`: shared legacy scripts still imported by active Stage2 code.
+- `common/`: LightGBM/XGBoost helper scripts imported by the active tree
+  consensus route.
+- `tools/stage2_validation/`: multi-window backtest and leakage-audit scripts
+  used for final verification, kept out of the root model chain.
 - `history/common/`: data backups, old IDE config, old utilities, and generic
   legacy reports.
 - `history/stage1/`: Stage1 scripts, submissions, and reports.

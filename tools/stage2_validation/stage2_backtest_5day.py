@@ -17,7 +17,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 LEGACY = ROOT / "common" / "legacy_scripts"
 ARCHIVED_STAGE2 = ROOT / "history" / "stage2" / "scripts"
 PYTHON = Path("/opt/anaconda3/envs/mlcomp-sp26/bin/python")

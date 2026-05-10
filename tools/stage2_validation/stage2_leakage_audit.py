@@ -14,16 +14,20 @@ from __future__ import annotations
 import argparse
 import inspect
 from pathlib import Path
+import sys
 
 import numpy as np
 import pandas as pd
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from stage2_weekly_alpha_overlay import generate_submission as generate_alpha
 from stage2_baseline_guard_ensemble import generate_submission as generate_baseline_guard
 from stage2_weekly_consensus_ensemble import generate_submission as generate_consensus
 from stage2_weekly_cycle_tree import PortfolioShape, generate_submission as generate_cycle_tree
 
-ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "data"
 
 

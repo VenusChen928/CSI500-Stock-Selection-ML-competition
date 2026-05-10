@@ -48,13 +48,16 @@ python validate_submission.py submissions/portfolio.csv
 
 ## Final Model Route
 
-`stage2_baseline_guard_ensemble.py` is the final route.  It uses only data up
-to the requested `as_of` date and combines:
+`stage2_baseline_guard_ensemble.py` is the 12-window best route, named
+`baseline_guard_adaptive` in the validation reports.  It uses only data up to
+the requested `as_of` date and combines:
 
 - official XGBoost-style baseline fallback;
 - LightGBM/XGBoost tree consensus;
 - weekly alpha overlay;
 - full-week cycle tree route;
+- meta/hybrid/LSTM fallback used by the weekly alpha base when no cache is
+  provided;
 - as-of-observable regime guards.
 
 The guard chooses the safest route for the current market regime and does not
@@ -63,6 +66,13 @@ read realized future returns or cached historical score results.  For
 with 30 rank-weighted names.  A final top-k sanity check kept top30 because the
 closest historical baseline-guard windows showed better mean and minimum excess
 than top35/top40/top50/top60.
+
+The full-week validation summary used for the final choice is:
+
+```text
+baseline_guard_adaptive: mean excess +4.001%, min +0.907%, 0 negative windows / 12
+baseline_xgb:            mean excess +0.527%, min -1.221%, 5 negative windows / 12
+```
 
 ## Validation Commands
 
@@ -75,7 +85,7 @@ python validate_submission.py submissions/portfolio.csv
 Run a leakage audit:
 
 ```bash
-python stage2_leakage_audit.py \
+python tools/stage2_validation/stage2_leakage_audit.py \
   --as-of 20260109 20260227 20260313 20260327 20260410 20260508 \
   --models baseline_guard_adaptive \
   --out submissions/stage2/final_report_materials/05_final_leakage_audit_dynamic.csv \
@@ -85,7 +95,7 @@ python stage2_leakage_audit.py \
 Run full-week comparison:
 
 ```bash
-python stage2_backtest_5day.py \
+python tools/stage2_validation/stage2_backtest_5day.py \
   --models baseline_xgb baseline_guard_adaptive \
   --full-week-only \
   --windows 12 \

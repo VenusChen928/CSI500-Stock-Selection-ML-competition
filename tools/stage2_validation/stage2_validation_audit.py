@@ -12,16 +12,20 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import sys
 
 import numpy as np
 import pandas as pd
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from baseline_xgboost import FORWARD_HORIZON
 from score_submission import score_window
 from stage2_hybrid_gate import generate_hybrid_submission
 from stage2_meta_portfolio_ensemble import generate_meta_ensemble
 
-ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "data"
 
 
