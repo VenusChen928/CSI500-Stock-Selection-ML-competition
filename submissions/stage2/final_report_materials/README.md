@@ -5,7 +5,8 @@ It is intentionally small and ordered by report-writing flow.
 
 ## Files
 
-- `00_stage2_final_report_summary.md`: human-readable summary and report index.
+- `00_stage2_final_report_summary.md`: full Stage2 report narrative, including
+  objective, data, features, models, validation, final route, and self-tests.
 - `01_final_portfolio_metadata.csv`: final portfolio route and training
   metadata for `submissions/portfolio.csv`.
 - `02_full_week_12_window_performance_summary.csv`: aggregate 12-window
@@ -18,6 +19,8 @@ It is intentionally small and ordered by report-writing flow.
   dynamic leakage audit.
 - `06_final_leakage_audit_static_scan.csv`: static scan for leakage-prone code
   references.
+- `07_stage2_experiment_history.md`: chronological optimization log, rejected
+  directions, window-definition correction, and final decision trail.
 
 Older redundant checks are archived in
 `history/stage2/reports_archive/redundant_final_checks_20260510/`.

@@ -105,3 +105,14 @@ python tools/stage2_validation/stage2_backtest_5day.py \
 ```
 
 Historical reports are archived under `history/stage2/reports_archive/`.
+
+## Report Materials
+
+The final write-up materials are organized in:
+
+```text
+submissions/stage2/final_report_materials/
+```
+
+Start with `00_stage2_final_report_summary.md` for the main narrative and
+`07_stage2_experiment_history.md` for the detailed experiment trail.
