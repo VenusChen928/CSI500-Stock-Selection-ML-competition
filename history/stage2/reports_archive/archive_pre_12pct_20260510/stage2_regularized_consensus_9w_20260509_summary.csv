@@ -1,0 +1,2 @@
+model,mean,sum,median,min,max,count,negative_windows
+regularized_consensus,-0.0024511111111111105,-0.022059999999999996,-0.00426,-0.04645,0.02831,9,5

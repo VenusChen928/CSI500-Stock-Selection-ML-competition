@@ -1,0 +1,2 @@
+model,mean,sum,median,min,max,count,negative_windows
+tree_lstm_gate,0.029825555555555557,0.26843,0.025990000000000003,0.00929,0.04569,9,0

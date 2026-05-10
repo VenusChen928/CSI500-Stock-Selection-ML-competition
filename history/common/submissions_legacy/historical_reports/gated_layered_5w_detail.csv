@@ -1,0 +1,6 @@
+model,as_of,start,end,selected,layer_policy,layer_val_mean,portfolio_return,benchmark_return,excess_return
+gated_layered_lstm,2026-03-24,2026-03-25,2026-03-31,layered_lstm,concentrate_130,0.0012614815921541,0.04006,0.00263,0.03743
+gated_layered_lstm,2026-03-31,2026-04-01,2026-04-08,layered_lstm,drop_biggest_10pct,0.0066398375246474,0.05329,0.04304,0.0102499999999999
+gated_layered_lstm,2026-04-08,2026-04-09,2026-04-15,tuned_xgb_fallback,growth_tilt_025,-0.0076538086053104,0.03028,0.01245,0.01782
+gated_layered_lstm,2026-04-15,2026-04-16,2026-04-22,tuned_xgb_fallback,drop_low_pb_10pct,0.0005932788782407,0.04382,0.0412899999999999,0.00254
+gated_layered_lstm,2026-04-21,2026-04-22,2026-04-28,layered_lstm,drop_smallest_10pct,0.0137235941419596,0.03354,-0.00802,0.04156

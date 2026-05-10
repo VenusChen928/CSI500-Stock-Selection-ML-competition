@@ -1,0 +1,6 @@
+model,as_of,start,end,submission,status,error,portfolio_return,benchmark_return,excess_return,n_names
+regime_gated_lstm,2026-03-24,2026-03-25,2026-03-31,submissions/stage2/backtests/current_best/stage2_regime_gated_fixed_historical5_20260506/regime_gated_lstm_20260324.csv,ok,,0.029849999999999998,0.00263,0.02722,30
+regime_gated_lstm,2026-03-31,2026-04-01,2026-04-08,submissions/stage2/backtests/current_best/stage2_regime_gated_fixed_historical5_20260506/regime_gated_lstm_20260331.csv,ok,,0.06056,0.04304,0.01752,30
+regime_gated_lstm,2026-04-08,2026-04-09,2026-04-15,submissions/stage2/backtests/current_best/stage2_regime_gated_fixed_historical5_20260506/regime_gated_lstm_20260408.csv,ok,,0.03028,0.012450000000000001,0.01782,40
+regime_gated_lstm,2026-04-15,2026-04-16,2026-04-22,submissions/stage2/backtests/current_best/stage2_regime_gated_fixed_historical5_20260506/regime_gated_lstm_20260415.csv,ok,,0.04382,0.04128999999999999,0.00254,70
+regime_gated_lstm,2026-04-21,2026-04-22,2026-04-28,submissions/stage2/backtests/current_best/stage2_regime_gated_fixed_historical5_20260506/regime_gated_lstm_20260421.csv,ok,,0.01554,-0.008020000000000001,0.023559999999999998,30

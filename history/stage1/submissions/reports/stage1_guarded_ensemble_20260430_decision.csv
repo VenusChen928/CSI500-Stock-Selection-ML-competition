@@ -1,0 +1,2 @@
+alpha_lstm,reason,idx_ret_1d,idx_ret_3d,idx_ret_5d,idx_ret_10d,idx_vol_10d
+1.0,"normal_lstm: no rally-pullback guard triggered (ret1=0.0008, ret3=0.0061, ret5=0.0065)",0.00084939361734504,0.0060800942373033795,0.006546069314484759,0.020712017312295883,0.010045718331371526

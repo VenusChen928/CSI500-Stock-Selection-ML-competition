@@ -1,0 +1,2 @@
+model,mean_excess,min_excess,max_excess,neg_windows,candidate_set,current_votes,top_k,rank_power,report
+stage2_multiroute_consensus,0.087183609617454,0.0436138810854581,0.2019108587012575,0,broad_plus_lstm,5,30,128,stage2_multiroute_consensus_refine_12w_20260510.csv

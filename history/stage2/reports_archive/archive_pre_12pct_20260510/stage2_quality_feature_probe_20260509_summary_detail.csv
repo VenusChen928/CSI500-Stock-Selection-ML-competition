@@ -1,0 +1,13 @@
+model,as_of,start,end,submission,status,error,portfolio_return,benchmark_return,excess_return,n_names
+hybrid_gate,2026-01-30,2026-02-02,2026-02-06,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_20260130.csv,ok,,0.00612,-0.026770000000000002,0.03289,30
+hybrid_gate_quality,2026-01-30,2026-02-02,2026-02-06,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_quality_20260130.csv,ok,,-0.021429999999999998,-0.026770000000000002,0.00534,30
+hybrid_gate,2026-02-06,2026-02-09,2026-02-13,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_20260206.csv,ok,,0.07136,0.018799999999999997,0.05255,30
+hybrid_gate_quality,2026-02-06,2026-02-09,2026-02-13,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_quality_20260206.csv,ok,,0.083,0.018799999999999997,0.06419,30
+hybrid_gate,2026-03-16,2026-03-17,2026-03-23,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_20260316.csv,ok,,-0.013340000000000001,-0.09095,0.07761,30
+hybrid_gate_quality,2026-03-16,2026-03-17,2026-03-23,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_quality_20260316.csv,ok,,-0.06138,-0.09095,0.02957,30
+hybrid_gate,2026-04-07,2026-04-08,2026-04-14,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_20260407.csv,ok,,0.13729,0.06835,0.06895,30
+hybrid_gate_quality,2026-04-07,2026-04-08,2026-04-14,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_quality_20260407.csv,ok,,0.12772,0.06835,0.059379999999999995,30
+hybrid_gate,2026-04-21,2026-04-22,2026-04-28,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_20260421.csv,ok,,0.05131,-0.008020000000000001,0.059340000000000004,30
+hybrid_gate_quality,2026-04-21,2026-04-22,2026-04-28,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_quality_20260421.csv,ok,,-0.00222,-0.008020000000000001,0.0058,30
+hybrid_gate,2026-04-28,2026-04-29,2026-05-08,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_20260428.csv,ok,,0.14106,0.05975,0.08130000000000001,30
+hybrid_gate_quality,2026-04-28,2026-04-29,2026-05-08,submissions/stage2/backtests/probes/quality_feature_probe_20260509/hybrid_gate_quality_20260428.csv,ok,,0.11155,0.05975,0.0518,30

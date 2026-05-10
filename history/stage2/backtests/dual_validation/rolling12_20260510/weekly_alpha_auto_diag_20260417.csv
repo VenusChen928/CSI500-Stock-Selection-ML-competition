@@ -1,0 +1,11 @@
+stock_code,_weekly_alpha_score,formula_terms
+002156,0.8598196392785571,vol_ratio_5_20:low:0.45 | obv_20d:high:0.35 | amount_z_20d:high:0.2
+300474,0.8121643286573146,vol_ratio_5_20:low:0.45 | obv_20d:high:0.35 | amount_z_20d:high:0.2
+002926,0.7933667334669339,vol_ratio_5_20:low:0.45 | obv_20d:high:0.35 | amount_z_20d:high:0.2
+601990,0.784509018036072,vol_ratio_5_20:low:0.45 | obv_20d:high:0.35 | amount_z_20d:high:0.2
+002032,0.7793987975951904,vol_ratio_5_20:low:0.45 | obv_20d:high:0.35 | amount_z_20d:high:0.2
+002739,0.7713026052104209,vol_ratio_5_20:low:0.45 | obv_20d:high:0.35 | amount_z_20d:high:0.2
+002500,0.7636072144288577,vol_ratio_5_20:low:0.45 | obv_20d:high:0.35 | amount_z_20d:high:0.2
+600764,0.7621042084168336,vol_ratio_5_20:low:0.45 | obv_20d:high:0.35 | amount_z_20d:high:0.2
+002261,0.752124248496994,vol_ratio_5_20:low:0.45 | obv_20d:high:0.35 | amount_z_20d:high:0.2
+000728,0.7445891783567133,vol_ratio_5_20:low:0.45 | obv_20d:high:0.35 | amount_z_20d:high:0.2

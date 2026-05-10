@@ -1,0 +1,4 @@
+model,as_of,start,end,n,policy,portfolio_return,benchmark_return,excess_return
+lstm_lgb_confidence_top35,2026-04-22,2026-04-23,2026-04-27,35,"alpha_lstm=0.90;risk_penalty=0.30;rank_power=1.60;confidence_power=2.00",0.01522,-0.00921,0.02443
+lstm_lgb_confidence_top35,2026-04-24,2026-04-27,2026-04-29,35,"alpha_lstm=0.90;risk_penalty=0.30;rank_power=1.60;confidence_power=2.00",0.02829,0.01146,0.01682
+lstm_lgb_confidence_top35,2026-04-27,2026-04-28,2026-04-30,35,"alpha_lstm=0.90;risk_penalty=0.30;rank_power=1.60;confidence_power=2.00",0.03686,0.00608,0.03078

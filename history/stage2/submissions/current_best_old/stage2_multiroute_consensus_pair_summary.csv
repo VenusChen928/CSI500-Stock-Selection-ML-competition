@@ -1,0 +1,3 @@
+as_of,csv,meta,n_names,max_weight,source_mode,start,end,portfolio_return,benchmark_return,excess_return
+2026-04-28,submissions/stage2/current_best/stage2_multiroute_consensus_20260428.csv,submissions/stage2/current_best/stage2_multiroute_consensus_20260428_meta.csv,30,0.1,cache,2026-04-29,2026-05-08,0.16419281687885728,0.05975284377875534,0.10443997310010195
+2026-05-08,submissions/stage2/current_best/stage2_multiroute_consensus_20260508.csv,submissions/stage2/current_best/stage2_multiroute_consensus_20260508_meta.csv,30,0.1,live,,,,,

@@ -1,0 +1,2 @@
+model,mean,sum,median,min,max,count,negative_windows
+baseline_flow_gate,0.012107999999999999,0.06054,0.011699999999999999,-0.00455,0.03898,5,2

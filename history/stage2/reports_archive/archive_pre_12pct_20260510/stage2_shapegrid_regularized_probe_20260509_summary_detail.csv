@@ -1,0 +1,4 @@
+model,as_of,start,end,submission,status,error,portfolio_return,benchmark_return,excess_return,n_names
+hybrid_gate,2026-03-02,2026-03-03,2026-03-09,submissions/stage2/backtests/probes/shapegrid_regularized_20260509/hybrid_gate_20260302.csv,ok,,-0.01179,-0.04376,0.03196,30
+hybrid_gate,2026-03-09,2026-03-10,2026-03-16,submissions/stage2/backtests/probes/shapegrid_regularized_20260509/hybrid_gate_20260309.csv,ok,,0.02081,-0.01139,0.0322,30
+hybrid_gate,2026-04-28,2026-04-29,2026-05-08,submissions/stage2/backtests/probes/shapegrid_regularized_20260509/hybrid_gate_20260428.csv,ok,,0.13981,0.05975,0.08005000000000001,30

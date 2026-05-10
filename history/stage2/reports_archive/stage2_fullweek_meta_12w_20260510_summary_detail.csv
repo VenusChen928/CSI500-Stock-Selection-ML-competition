@@ -1,0 +1,13 @@
+model,as_of,start,end,submission,status,error,portfolio_return,benchmark_return,excess_return,n_names
+meta_portfolio_ensemble,2026-01-09,2026-01-12,2026-01-16,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260109.csv,ok,,0.02556,0.021840000000000002,0.0037199999999999998,30
+meta_portfolio_ensemble,2026-01-16,2026-01-19,2026-01-23,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260116.csv,ok,,0.09262000000000001,0.04341999999999999,0.04919,30
+meta_portfolio_ensemble,2026-01-23,2026-01-26,2026-01-30,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260123.csv,ok,,-0.05566,-0.02557,-0.03009,30
+meta_portfolio_ensemble,2026-01-30,2026-02-02,2026-02-06,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260130.csv,ok,,0.01122,-0.026770000000000002,0.037989999999999996,30
+meta_portfolio_ensemble,2026-02-06,2026-02-09,2026-02-13,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260206.csv,ok,,0.08753,0.018799999999999997,0.06872,30
+meta_portfolio_ensemble,2026-02-27,2026-03-02,2026-03-06,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260227.csv,ok,,-0.04482,-0.03443,-0.01039,30
+meta_portfolio_ensemble,2026-03-06,2026-03-09,2026-03-13,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260306.csv,ok,,0.01924,-0.014419999999999999,0.03366,40
+meta_portfolio_ensemble,2026-03-13,2026-03-16,2026-03-20,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260313.csv,ok,,-0.04796,-0.05822,0.01027,30
+meta_portfolio_ensemble,2026-03-20,2026-03-23,2026-03-27,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260320.csv,ok,,-0.0017599999999999998,-0.0028899999999999998,0.00113,30
+meta_portfolio_ensemble,2026-03-27,2026-03-30,2026-04-03,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260327.csv,ok,,-0.026000000000000002,-0.02619,0.00018999999999999998,30
+meta_portfolio_ensemble,2026-04-10,2026-04-13,2026-04-17,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260410.csv,ok,,0.054009999999999996,0.03072,0.02328,30
+meta_portfolio_ensemble,2026-04-17,2026-04-20,2026-04-24,submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260417.csv,ok,,0.02811,0.0040999999999999995,0.024009999999999997,30

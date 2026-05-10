@@ -1,0 +1,11 @@
+stock_code,_weekly_alpha_score,formula_terms
+300383,0.7824649298597194,ret_1d:high:0.35 | ret_3d:high:0.2 | vol_ratio_5_20:low:0.25 | obv_20d:high:0.2
+600602,0.7496593186372746,ret_1d:high:0.35 | ret_3d:high:0.2 | vol_ratio_5_20:low:0.25 | obv_20d:high:0.2
+002202,0.7374148296593187,ret_1d:high:0.35 | ret_3d:high:0.2 | vol_ratio_5_20:low:0.25 | obv_20d:high:0.2
+600378,0.735130260521042,ret_1d:high:0.35 | ret_3d:high:0.2 | vol_ratio_5_20:low:0.25 | obv_20d:high:0.2
+600959,0.7160120240480962,ret_1d:high:0.35 | ret_3d:high:0.2 | vol_ratio_5_20:low:0.25 | obv_20d:high:0.2
+002064,0.7107815631262525,ret_1d:high:0.35 | ret_3d:high:0.2 | vol_ratio_5_20:low:0.25 | obv_20d:high:0.2
+600329,0.707755511022044,ret_1d:high:0.35 | ret_3d:high:0.2 | vol_ratio_5_20:low:0.25 | obv_20d:high:0.2
+600673,0.7063527054108217,ret_1d:high:0.35 | ret_3d:high:0.2 | vol_ratio_5_20:low:0.25 | obv_20d:high:0.2
+600598,0.7039879759519038,ret_1d:high:0.35 | ret_3d:high:0.2 | vol_ratio_5_20:low:0.25 | obv_20d:high:0.2
+603233,0.7035671342685372,ret_1d:high:0.35 | ret_3d:high:0.2 | vol_ratio_5_20:low:0.25 | obv_20d:high:0.2

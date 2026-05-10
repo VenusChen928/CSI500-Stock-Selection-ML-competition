@@ -1,0 +1,13 @@
+model,as_of,start,end,submission,status,error,portfolio_return,benchmark_return,excess_return,n_names
+fullweek_tree,2026-03-06,2026-03-09,2026-03-13,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_20260306.csv,ok,,-0.027999999999999997,-0.014419999999999999,-0.013580000000000002,30
+fullweek_tree_aggressive,2026-03-06,2026-03-09,2026-03-13,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_aggressive_20260306.csv,ok,,-0.026389999999999997,-0.014419999999999999,-0.011970000000000001,30
+fullweek_tree,2026-03-13,2026-03-16,2026-03-20,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_20260313.csv,ok,,-0.06579,-0.05822,-0.00756,30
+fullweek_tree_aggressive,2026-03-13,2026-03-16,2026-03-20,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_aggressive_20260313.csv,ok,,-0.06614,-0.05822,-0.00791,30
+fullweek_tree,2026-03-20,2026-03-23,2026-03-27,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_20260320.csv,ok,,0.00194,-0.0028899999999999998,0.00483,30
+fullweek_tree_aggressive,2026-03-20,2026-03-23,2026-03-27,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_aggressive_20260320.csv,ok,,0.0041199999999999995,-0.0028899999999999998,0.00701,30
+fullweek_tree,2026-03-27,2026-03-30,2026-04-03,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_20260327.csv,ok,,-0.022019999999999998,-0.02619,0.00417,30
+fullweek_tree_aggressive,2026-03-27,2026-03-30,2026-04-03,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_aggressive_20260327.csv,ok,,-0.0204,-0.02619,0.00579,30
+fullweek_tree,2026-04-10,2026-04-13,2026-04-17,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_20260410.csv,ok,,0.025150000000000002,0.03072,-0.005580000000000001,30
+fullweek_tree_aggressive,2026-04-10,2026-04-13,2026-04-17,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_aggressive_20260410.csv,ok,,0.01697,0.03072,-0.01375,30
+fullweek_tree,2026-04-17,2026-04-20,2026-04-24,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_20260417.csv,ok,,0.06242,0.0040999999999999995,0.05832,30
+fullweek_tree_aggressive,2026-04-17,2026-04-20,2026-04-24,submissions/stage2/backtests/full_week/stage2_fullweek_tree_6w_20260510/fullweek_tree_aggressive_20260417.csv,ok,,0.0729,0.0040999999999999995,0.0688,30

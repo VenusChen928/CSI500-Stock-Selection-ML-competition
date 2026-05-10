@@ -1,0 +1,3 @@
+model,mean,sum,median,min,max,count,negative_windows
+enhanced_lgb_stock,0.012086,0.06043,0.014190000000000001,-0.01855,0.03093,5,1
+enhanced_blend_stock,0.006624,0.03312,0.015189999999999999,-0.012410000000000001,0.0203,5,2

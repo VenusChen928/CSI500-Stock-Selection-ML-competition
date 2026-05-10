@@ -1,0 +1,2 @@
+short_weight,max_weight,n_names,long_n,short_n,overlap_n,long_route,short_route,long_decay_reason,short_decay_reason
+0.35,0.04,45,30,30,15,tree_consensus,tree_consensus,adaptive_decay_on,adaptive_decay_on

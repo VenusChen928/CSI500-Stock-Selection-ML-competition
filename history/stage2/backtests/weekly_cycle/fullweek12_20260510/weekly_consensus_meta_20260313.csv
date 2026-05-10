@@ -1,0 +1,2 @@
+as_of,model,candidate_count,top_k,rank_power,max_weight,n_names,max_observed_weight,effective_n,aggregate_top10,sources
+2026-03-13,stage2_weekly_consensus_ensemble,3,30,6.0,0.095,30,0.09500000000000001,12.333861463039089,688295 | 000830 | 603659 | 600339 | 600096 | 300763 | 600968 | 603077 | 688248 | 301301,cache:weekly_alpha_auto | cache:weekly_alpha_floor | cache:weekly_cycle_tree

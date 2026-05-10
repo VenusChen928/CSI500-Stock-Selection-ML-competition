@@ -1,0 +1,16 @@
+model,as_of,start,end,submission,status,error,portfolio_return,benchmark_return,excess_return,n_names
+open_xgb_valuation,2026-03-26,2026-03-27,2026-04-02,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_xgb_valuation_20260326.csv,ok,,-0.0103,-0.00482,-0.0054800000000000005,70
+open_lgb_valuation,2026-03-26,2026-03-27,2026-04-02,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_lgb_valuation_20260326.csv,ok,,-0.01115,-0.00482,-0.00633,100
+open_blend_valuation,2026-03-26,2026-03-27,2026-04-02,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_blend_valuation_20260326.csv,ok,,-0.01481,-0.00482,-0.00999,100
+open_xgb_valuation,2026-04-02,2026-04-03,2026-04-10,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_xgb_valuation_20260402.csv,ok,,0.03402,0.047869999999999996,-0.01385,40
+open_lgb_valuation,2026-04-02,2026-04-03,2026-04-10,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_lgb_valuation_20260402.csv,ok,,0.05728,0.047869999999999996,0.00941,100
+open_blend_valuation,2026-04-02,2026-04-03,2026-04-10,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_blend_valuation_20260402.csv,ok,,0.041890000000000004,0.047869999999999996,-0.00598,40
+open_xgb_valuation,2026-04-10,2026-04-13,2026-04-17,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_xgb_valuation_20260410.csv,ok,,0.04919,0.03072,0.01847,100
+open_lgb_valuation,2026-04-10,2026-04-13,2026-04-17,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_lgb_valuation_20260410.csv,ok,,0.05367,0.03072,0.022949999999999998,80
+open_blend_valuation,2026-04-10,2026-04-13,2026-04-17,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_blend_valuation_20260410.csv,ok,,0.0608,0.03072,0.03008,40
+open_xgb_valuation,2026-04-17,2026-04-20,2026-04-24,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_xgb_valuation_20260417.csv,ok,,0.01385,0.0040999999999999995,0.00975,100
+open_lgb_valuation,2026-04-17,2026-04-20,2026-04-24,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_lgb_valuation_20260417.csv,ok,,0.02891,0.0040999999999999995,0.02481,40
+open_blend_valuation,2026-04-17,2026-04-20,2026-04-24,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_blend_valuation_20260417.csv,ok,,0.019790000000000002,0.0040999999999999995,0.01569,70
+open_xgb_valuation,2026-04-24,2026-04-27,2026-05-06,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_xgb_valuation_20260424.csv,ok,,0.052930000000000005,0.04128999999999999,0.01164,65
+open_lgb_valuation,2026-04-24,2026-04-27,2026-05-06,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_lgb_valuation_20260424.csv,ok,,0.049409999999999996,0.04128999999999999,0.00812,45
+open_blend_valuation,2026-04-24,2026-04-27,2026-05-06,submissions/stage2/backtests/candidates/stage2_open_valuation_20260506/open_blend_valuation_20260424.csv,ok,,0.06162,0.04128999999999999,0.02033,65

@@ -1,0 +1,2 @@
+as_of,requested_mode,effective_mode,base_source,formula,alpha_top_k,alpha_power,confidence_penalty,base_weight,final_top_k,final_power,max_weight,n_names,max_actual_weight,idx_ret_3d,idx_ret_5d,idx_ret_20d,breadth_ret_3d_pos,breadth_ret_5d_pos
+2026-04-13,floor,floor,live:meta_portfolio_ensemble,gap_flow,30,6.0,0.1,0.7,50,4.0,0.1,50,0.09517766739029612,0.002837453224626474,0.05743365107980991,-0.033022775558332884,0.37074148296593185,0.7955911823647295

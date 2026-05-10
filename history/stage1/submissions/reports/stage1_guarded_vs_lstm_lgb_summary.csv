@@ -1,0 +1,4 @@
+model,mean_excess,min_excess,max_excess,std_excess,sum_excess,count,comment
+guarded_ensemble,0.024028,0.004101,0.033859,0.011698,0.144170,6,"Dynamic LSTM/LGB gate; all six windows beat benchmark."
+risk_balanced_lstm,0.018245,-0.009169,0.033859,0.019641,0.109471,6,"Highest normal-regime upside, but two negative excess windows."
+lgb_consensus_previous,0.006316,0.001468,0.017471,0.005933,0.037894,6,"Most defensive standalone route; all positive but lower upside."

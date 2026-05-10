@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+.DS_Store
+.idea/
+history/common/ide_config/
+*.log
+trading/
+.cc-agent/
+.claude/
+.mcp.json
+CLAUDE.md

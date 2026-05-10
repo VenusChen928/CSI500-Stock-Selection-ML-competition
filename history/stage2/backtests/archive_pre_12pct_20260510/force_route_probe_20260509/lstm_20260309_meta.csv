@@ -1,0 +1,2 @@
+route,reason,idx_ret_5d,idx_ret_20d,breadth_ret_5d_pos,median_ret_5d,final_route,route_reason,lstm_top_k,lstm_temperature,lstm_rank_blend,n_names,max_weight
+equal_universe,weak_short_tape_low_breadth_avoid_active_selection_noise,-0.043755877285399314,-0.0108761462848187,0.20040080160320642,-0.03531489111241892,lstm_rank_weight,forced_lstm,100,1.1,0.9,100,0.03479885322635628

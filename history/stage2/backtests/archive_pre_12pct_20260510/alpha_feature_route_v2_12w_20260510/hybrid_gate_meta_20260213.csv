@@ -1,0 +1,2 @@
+route,reason,idx_ret_5d,idx_ret_20d,breadth_ret_5d_pos,median_ret_5d,final_route,route_reason,factor_route_factor,factor_route_direction,factor_route_top_k,factor_route_rank_power,n_names,max_weight
+tree_consensus,normal_tree_consensus,0.018802385786234943,0.008127492962796579,0.48697394789579157,-0.0010084033613445564,factor_route,factor_overnight_ret_low,overnight_ret,low,30,2.0,30,0.09518773135906927

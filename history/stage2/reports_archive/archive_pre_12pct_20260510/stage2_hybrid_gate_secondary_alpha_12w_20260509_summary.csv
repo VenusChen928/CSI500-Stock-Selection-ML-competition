@@ -1,0 +1,2 @@
+model,mean,sum,median,min,max,count,negative_windows
+hybrid_gate,0.05206583333333334,0.6247900000000001,0.048525,0.02235,0.09326000000000001,12,0

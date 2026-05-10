@@ -1,0 +1,2 @@
+model,mean,sum,median,min,max,count,negative_windows
+enhanced_lgb_stock,0.0012600000000000005,0.006300000000000003,0.0044,-0.022719999999999997,0.01814,5,2

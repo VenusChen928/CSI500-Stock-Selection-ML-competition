@@ -1,0 +1,2 @@
+model,mean,sum,median,min,max,count,negative_windows
+tree_consensus_adaptive_decay,0.023034444444444444,0.20731,0.01968,0.00391,0.04446,9,0

@@ -1,0 +1,13 @@
+model,as_of,start,end,submission,status,error,portfolio_return,benchmark_return,excess_return,n_names
+hybrid_gate,2026-01-30,2026-02-02,2026-02-06,submissions/stage2/backtests/probes/catboost_challenger_20260509/hybrid_gate_20260130.csv,ok,,0.00612,-0.026770000000000002,0.03289,30
+catboost_quantile,2026-01-30,2026-02-02,2026-02-06,submissions/stage2/backtests/probes/catboost_challenger_20260509/catboost_quantile_20260130.csv,ok,,0.00307,-0.026770000000000002,0.029849999999999998,40
+hybrid_gate,2026-02-06,2026-02-09,2026-02-13,submissions/stage2/backtests/probes/catboost_challenger_20260509/hybrid_gate_20260206.csv,ok,,0.07136,0.018799999999999997,0.05255,30
+catboost_quantile,2026-02-06,2026-02-09,2026-02-13,submissions/stage2/backtests/probes/catboost_challenger_20260509/catboost_quantile_20260206.csv,ok,,0.028380000000000002,0.018799999999999997,0.00957,100
+hybrid_gate,2026-03-16,2026-03-17,2026-03-23,submissions/stage2/backtests/probes/catboost_challenger_20260509/hybrid_gate_20260316.csv,ok,,-0.013340000000000001,-0.09095,0.07761,30
+catboost_quantile,2026-03-16,2026-03-17,2026-03-23,submissions/stage2/backtests/probes/catboost_challenger_20260509/catboost_quantile_20260316.csv,ok,,-0.09888,-0.09095,-0.007940000000000001,100
+hybrid_gate,2026-04-07,2026-04-08,2026-04-14,submissions/stage2/backtests/probes/catboost_challenger_20260509/hybrid_gate_20260407.csv,ok,,0.13729,0.06835,0.06895,30
+catboost_quantile,2026-04-07,2026-04-08,2026-04-14,submissions/stage2/backtests/probes/catboost_challenger_20260509/catboost_quantile_20260407.csv,ok,,0.08272,0.06835,0.01437,100
+hybrid_gate,2026-04-21,2026-04-22,2026-04-28,submissions/stage2/backtests/probes/catboost_challenger_20260509/hybrid_gate_20260421.csv,ok,,0.05131,-0.008020000000000001,0.059340000000000004,30
+catboost_quantile,2026-04-21,2026-04-22,2026-04-28,submissions/stage2/backtests/probes/catboost_challenger_20260509/catboost_quantile_20260421.csv,ok,,-0.02675,-0.008020000000000001,-0.01872,50
+hybrid_gate,2026-04-28,2026-04-29,2026-05-08,submissions/stage2/backtests/probes/catboost_challenger_20260509/hybrid_gate_20260428.csv,ok,,0.14106,0.05975,0.08130000000000001,30
+catboost_quantile,2026-04-28,2026-04-29,2026-05-08,submissions/stage2/backtests/probes/catboost_challenger_20260509/catboost_quantile_20260428.csv,ok,,0.059370000000000006,0.05975,-0.00039,100
