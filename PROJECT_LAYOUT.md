@@ -26,6 +26,8 @@ their own report folders.
   the hybrid fallback.
 - `score_submission.py`: realized-return scoring script.
 - `validate_submission.py`: official submission format/rule validator.
+- `CSI500_Final_Report.docx`: final written report covering factors, models,
+  results/self-test, and analysis.
 
 ## Active Directories
 

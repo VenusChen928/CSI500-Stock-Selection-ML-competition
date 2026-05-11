@@ -8,6 +8,12 @@ Upload exactly this file:
 stage2_final_portfolio.csv
 ```
 
+The final written report is:
+
+```text
+CSI500_Final_Report.docx
+```
+
 Stage1 and Stage2 materials are separated so the final upload file is
 unambiguous.
 
@@ -105,6 +111,12 @@ python tools/stage2_validation/stage2_backtest_5day.py \
 ```
 
 ## Report Materials
+
+The polished final DOCX is in the repository root:
+
+```text
+CSI500_Final_Report.docx
+```
 
 The final write-up materials are organized in:
 
