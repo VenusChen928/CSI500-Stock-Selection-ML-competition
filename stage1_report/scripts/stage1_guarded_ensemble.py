@@ -21,8 +21,7 @@ import pandas as pd
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPORT_DIR = SCRIPT_DIR.parent
 PROJECT_ROOT = REPORT_DIR.parent
-TREE_HELPERS = PROJECT_ROOT / "stage2_report" / "scripts"
-for path in (SCRIPT_DIR, TREE_HELPERS, PROJECT_ROOT):
+for path in (SCRIPT_DIR, PROJECT_ROOT):
     if str(path) not in sys.path:
         sys.path.insert(0, str(path))
 

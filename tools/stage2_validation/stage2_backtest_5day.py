@@ -22,7 +22,7 @@ FORWARD_HORIZON = 5
 
 def _env() -> dict[str, str]:
     env = os.environ.copy()
-    env["PYTHONPATH"] = f"{ROOT}:{ROOT / 'stage2_report' / 'scripts'}:{env.get('PYTHONPATH', '')}"
+    env["PYTHONPATH"] = f"{ROOT}:{env.get('PYTHONPATH', '')}"
     env["DYLD_FALLBACK_LIBRARY_PATH"] = "/opt/homebrew/opt/libomp/lib:/opt/homebrew/opt/openssl@3/lib"
     env["MLCOMP_DEVICE"] = "cpu"
     for key in [
@@ -288,6 +288,14 @@ def main() -> int:
     )
     parser.add_argument("--out-dir", default=str(ROOT / "stage2_report" / "backtests" / "stage2_5day_current"))
     parser.add_argument("--summary-out", default=str(ROOT / "stage2_report" / "final_report_materials" / "stage2_5day_current_summary.csv"))
+    parser.add_argument(
+        "--detail-out",
+        default=None,
+        help=(
+            "Optional explicit per-window detail CSV path. When omitted, the "
+            "detail file is written next to --summary-out with '_detail' appended."
+        ),
+    )
     parser.add_argument("--skip-existing", action="store_true")
     parser.add_argument("--timeout", type=int, default=900)
     parser.add_argument(
@@ -372,7 +380,10 @@ def main() -> int:
     if not summary_path.is_absolute():
         summary_path = ROOT / summary_path
     summary_path.parent.mkdir(parents=True, exist_ok=True)
-    detail_path = summary_path.with_name(summary_path.stem + "_detail.csv")
+    detail_path = Path(args.detail_out) if args.detail_out else summary_path.with_name(summary_path.stem + "_detail.csv")
+    if not detail_path.is_absolute():
+        detail_path = ROOT / detail_path
+    detail_path.parent.mkdir(parents=True, exist_ok=True)
     summary.to_csv(summary_path)
     detail.to_csv(detail_path, index=False)
     print("\n>> summary")

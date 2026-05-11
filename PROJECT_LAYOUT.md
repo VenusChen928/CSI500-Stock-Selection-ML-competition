@@ -12,6 +12,10 @@ their own report folders.
 - `download_data.py`: official data updater.
 - `features.py`: shared OHLCV feature engineering.
 - `baseline_xgboost.py`: official-style baseline and shared portfolio helpers.
+- `tuned_xgboost_portfolio.py`: tuned XGBoost helper used by the Stage2 tree
+  consensus branch.
+- `lightgbm_portfolio.py`: LightGBM helper used by the Stage2 tree consensus
+  branch.
 - `lstm_rank_weight.py`: sequence learner used by the active hybrid fallback
   chain.
 - `stage2_baseline_guard_ensemble.py`: current final Stage2 generator.
@@ -35,8 +39,9 @@ their own report folders.
 - `stage2_final_portfolio.csv`: the only final Stage2 upload candidate.
 - `stage2_report/final_report_materials/`: final metadata, validation,
   leakage, performance, and portfolio-shape evidence for the written report.
-- `stage2_report/scripts/`: Stage2 helper scripts imported by active root
-  routes, currently the LightGBM and tuned-XGBoost tree helpers.
+- `stage2_report/backtests/`: saved per-window portfolio CSVs from the final
+  12-window Stage2 self-test, plus adaptive-route meta CSVs and a README
+  explaining how to regenerate them.
 - `stage1_report/`: Stage1 final portfolio, scripts, and report evidence kept
   out of the active Stage2 path.
 - `tools/stage2_validation/`: multi-window backtest and leakage-audit scripts

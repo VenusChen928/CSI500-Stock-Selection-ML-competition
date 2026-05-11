@@ -123,7 +123,7 @@ The final strict 12 full-week validation is:
 | model | mean excess | min excess | max excess | negative windows |
 |---|---:|---:|---:|---:|
 | `baseline_guard_adaptive` | `+4.001%` | `+0.907%` | `+12.308%` | `0 / 12` |
-| original `baseline_xgb` | `+0.527%` | `-1.221%` | `+2.916%` | `5 / 12` |
+| original `baseline_xgb` | `+0.600%` | `-1.221%` | `+2.916%` | `5 / 12` |
 
 The per-window file is:
 

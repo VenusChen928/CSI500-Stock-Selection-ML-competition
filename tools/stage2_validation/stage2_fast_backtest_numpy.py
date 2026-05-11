@@ -30,7 +30,7 @@ from stage2_backtest_5day import (
 
 def env() -> dict[str, str]:
     out = os.environ.copy()
-    out["PYTHONPATH"] = f"{ROOT}:{ROOT / 'stage2_report' / 'scripts'}:{out.get('PYTHONPATH', '')}"
+    out["PYTHONPATH"] = f"{ROOT}:{out.get('PYTHONPATH', '')}"
     out["DYLD_FALLBACK_LIBRARY_PATH"] = "/opt/homebrew/opt/libomp/lib:/opt/homebrew/opt/openssl@3/lib"
     out["MLCOMP_DEVICE"] = "cpu"
     for key in [

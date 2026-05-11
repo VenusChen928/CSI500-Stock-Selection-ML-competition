@@ -28,7 +28,7 @@ from baseline_xgboost import (
 )
 from score_submission import score_window
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path(__file__).resolve().parent
 DATA_DIR = PROJECT_ROOT / "data"
 DEFAULT_VAL_DAYS = 15
 DEFAULT_LOOKBACK_DAYS = 475

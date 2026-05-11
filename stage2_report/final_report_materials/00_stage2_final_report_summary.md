@@ -137,7 +137,7 @@ a mixture-of-experts route selector, not a simple average of all models.
 | expert | implementation | role |
 |---|---|---|
 | official-style XGBoost baseline | `baseline_xgboost.py` and fallback inside `stage2_baseline_guard_ensemble.py` | stable defensive route |
-| LightGBM/XGBoost tree consensus | `stage2_tree_consensus.py` plus helper scripts in `stage2_report/scripts/` | two-model tabular consensus |
+| LightGBM/XGBoost tree consensus | `stage2_tree_consensus.py`, `lightgbm_portfolio.py`, `tuned_xgboost_portfolio.py` | two-model tabular consensus |
 | weekly alpha overlay | `stage2_weekly_alpha_overlay.py` | combines base portfolio with flow/volatility/OBV style weekly alpha |
 | weekly consensus | `stage2_weekly_consensus_ensemble.py` | aggregates weekly alpha and weekly cycle tree |
 | weekly cycle tree | `stage2_weekly_cycle_tree.py` | learns full-week excess-return features including calendar cycle terms |
@@ -208,7 +208,7 @@ The final comparison uses 12 strict complete Monday-Friday full-week windows.
 | model | mean excess | median excess | min excess | max excess | negative windows |
 |---|---:|---:|---:|---:|---:|
 | `baseline_guard_adaptive` | `+4.001%` | `+3.001%` | `+0.907%` | `+12.308%` | `0 / 12` |
-| original `baseline_xgb` | `+0.527%` | `+0.264%` | `-1.221%` | `+2.916%` | `5 / 12` |
+| original `baseline_xgb` | `+0.600%` | `+0.264%` | `-1.221%` | `+2.916%` | `5 / 12` |
 
 Detailed per-window evidence is in:
 
@@ -283,6 +283,7 @@ python tools/stage2_validation/stage2_backtest_5day.py \
   --full-week-only \
   --windows 12 \
   --jobs 4 \
-  --out-dir stage2_report/backtests/final_check \
-  --summary-out stage2_report/final_report_materials/02_full_week_12_window_performance_summary.csv
+  --out-dir stage2_report/backtests/guard_route_v2_nocache_fullweek12_20260510 \
+  --summary-out stage2_report/final_report_materials/02_full_week_12_window_performance_summary.csv \
+  --detail-out stage2_report/final_report_materials/03_full_week_12_window_performance_detail.csv
 ```

@@ -8,9 +8,16 @@ artifacts.  The actual portfolio to upload is the root-level
 
 - `final_report_materials/`: final score summaries, leakage audits, top-k
   sanity check, metadata, and report-writing index.
-- `scripts/`: Stage2 helper scripts imported by the active model chain but not
-  intended as final upload entry points.
+- `backtests/`: saved per-window portfolio CSVs from the final 12-window
+  validation run, adaptive-route meta CSVs, and a README explaining how to
+  regenerate them.
 
-Rejected variants and large transient backtest folders were removed from the
+Rejected variants and large transient backtest outputs were removed from the
 clean submission layout; the retained report evidence is in
-`final_report_materials/`.
+`final_report_materials/`, while `backtests/` keeps the final per-window
+portfolio records and route metadata used by the self-test.
+
+Active model helper code lives at the repository root, not inside this report
+folder.  In particular, `lightgbm_portfolio.py` and
+`tuned_xgboost_portfolio.py` are root-level helpers used by
+`stage2_tree_consensus.py`.

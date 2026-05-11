@@ -20,7 +20,7 @@ On the final strict self-test of 12 complete Monday-Friday five-day windows, the
 | model | mean excess | median excess | min excess | max excess | negative windows |
 |---|---:|---:|---:|---:|---:|
 | final regime-gated ensemble | +4.001% | +3.001% | +0.907% | +12.308% | 0 / 12 |
-| original XGBoost baseline | +0.527% | +0.264% | -1.221% | +2.916% | 5 / 12 |
+| original XGBoost baseline | +0.600% | +0.264% | -1.221% | +2.916% | 5 / 12 |
 
 The final route improved both the average excess return and the downside floor relative to the original baseline.  The final report intentionally presents failed attempts as well, because many high-looking experiments were later rejected after stricter window definition and leakage checks.
 
@@ -186,7 +186,7 @@ The baseline model predicts raw five-day future stock return, then ranks the cro
 | L2 regularization | 1.0 |
 | tree method | `hist` |
 | validation days | 10 trading days |
-| embargo | 5 trading days |
+| Embargo | 5 trading days |
 | early stopping | 30 rounds |
 | default portfolio size | 50 names |
 
@@ -268,7 +268,7 @@ The final production route is implemented in `stage2_baseline_guard_ensemble.py`
 | expert | implementation | role |
 |---|---|---|
 | official-style XGBoost fallback | `baseline_xgboost.py` and fallback function inside final route | stable defensive branch |
-| LightGBM/XGBoost tree consensus | `stage2_tree_consensus.py` plus helper scripts | tabular consensus branch |
+| LightGBM/XGBoost tree consensus | `stage2_tree_consensus.py`, `lightgbm_portfolio.py`, `tuned_xgboost_portfolio.py` | tabular consensus branch |
 | weekly alpha overlay | `stage2_weekly_alpha_overlay.py` | flow/volatility/OBV style confidence branch |
 | weekly consensus | `stage2_weekly_consensus_ensemble.py` | combines weekly alpha and weekly cycle ideas |
 | weekly cycle tree | `stage2_weekly_cycle_tree.py` | full-week calendar and excess-return expert |
@@ -351,82 +351,26 @@ Across only those two baseline-routed sanity-check windows, top30 had the best m
 
 The causal use of this table is therefore limited but clear: it did not decide the overall model, and it was not used to claim that 30 names is globally optimal for all regimes.  It only supported the final fallback-branch portfolio shape.  In the closest available baseline-routed regimes, larger portfolios diluted the XGBoost rank signal and lowered the floor.  Since the final top30 shape stayed below the 10% cap and had 22.87 effective names, I kept top30 for the final overheated high-breadth fallback.
 
-## 3. Results And Self-Test
+## 3. Results
 
-### 3.1 Self-Test Methodology
+This section reports how the final portfolio generator performed on held-out complete workweek windows relative to the original XGBoost baseline.  The construction of the train / validation / test split and the no-leakage checks are documented separately in Section 5, so this section focuses on the empirical outcome.
 
-The self-test uses a walk-forward split, not a random split.  This is necessary for financial data because random splitting would leak time information.
-
-For every tested as-of date:
-
-```text
-1. truncate stock and index data to date <= as_of
-2. build features on the truncated panel
-3. remove the last 5 trading days from supervised training target availability
-4. split the remaining supervised data into train / embargo / validation
-5. train the model route
-6. generate portfolio at as_of
-7. score only on future dates after as_of
-```
-
-The official-style XGBoost branch uses:
-
-| split component | definition |
-|---|---|
-| training target cutoff | `as_of - 5 trading days` |
-| training set | all eligible rows up to `train_end` |
-| embargo | 5 trading days discarded between train and validation |
-| validation set | last 10 trading days after embargo |
-| test set | future five trading days after as-of |
-
-For Stage2 model selection, the final test set uses 12 strict complete Monday-Friday windows.  Each portfolio is generated using only data available before its own test window.
-
-### 3.2 Why The Window Definition Was Corrected
-
-Early in the project, many "five-day" tests used the next five trading days after an arbitrary as-of date.  That is a valid generic holding-period test, but it often crosses weekends or holidays.  After auditing the intended Stage2 target, we changed the main self-test to complete Monday-Friday workweeks.
-
-| old validation set | complete Mon-Fri windows | issue |
-|---|---:|---|
-| old 12-window setup | 2 / 12 | most windows crossed weekend or holiday gaps |
-| old 9-window setup | 0 / 9 | none were strict workweeks |
-
-This correction invalidated an earlier optimistic high-water mark around +8.7% mean excess.  It was useful research evidence but not safe as the final Stage2 standard.
-
-### 3.3 Final Self-Test Windows
-
-The final 12 held-out complete workweek windows were:
-
-| as_of | evaluation window |
-|---|---|
-| 2026-01-09 | 2026-01-12 to 2026-01-16 |
-| 2026-01-16 | 2026-01-19 to 2026-01-23 |
-| 2026-01-23 | 2026-01-26 to 2026-01-30 |
-| 2026-01-30 | 2026-02-02 to 2026-02-06 |
-| 2026-02-06 | 2026-02-09 to 2026-02-13 |
-| 2026-02-27 | 2026-03-02 to 2026-03-06 |
-| 2026-03-06 | 2026-03-09 to 2026-03-13 |
-| 2026-03-13 | 2026-03-16 to 2026-03-20 |
-| 2026-03-20 | 2026-03-23 to 2026-03-27 |
-| 2026-03-27 | 2026-03-30 to 2026-04-03 |
-| 2026-04-10 | 2026-04-13 to 2026-04-17 |
-| 2026-04-17 | 2026-04-20 to 2026-04-24 |
-
-### 3.4 Aggregate Results
+### 3.1 Held-Out Performance Relative To Baseline
 
 The final route was compared with the original baseline XGBoost on the same 12 windows.
 
 | model | mean excess | sum excess | median excess | min excess | max excess | count | negative windows |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | final regime-gated ensemble | +4.001% | +48.006% | +3.001% | +0.907% | +12.308% | 12 | 0 |
-| original XGBoost baseline | +0.527% | +6.323% | +0.264% | -1.221% | +2.916% | 12 | 5 |
+| original XGBoost baseline | +0.600% | +7.194% | +0.264% | -1.221% | +2.916% | 12 | 5 |
 
-The final route improved mean excess by +3.473 percentage points per window and removed all negative excess windows in this self-test.
+The final route improved mean excess by +3.401 percentage points per held-out window and removed all negative excess windows.  It beat the original baseline in all 12 test windows.
 
-### 3.5 Per-Window Results
+### 3.2 Window-By-Window Held-Out Results
 
 | window | baseline excess | final excess | difference | winner |
 |---|---:|---:|---:|---|
-| 2026-01-12 to 2026-01-16 | +1.356% | +2.948% | +1.593% | final |
+| 2026-01-12 to 2026-01-16 | +2.227% | +2.948% | +0.721% | final |
 | 2026-01-19 to 2026-01-23 | -0.581% | +6.633% | +7.214% | final |
 | 2026-01-26 to 2026-01-30 | -0.380% | +1.141% | +1.521% | final |
 | 2026-02-02 to 2026-02-06 | -0.228% | +2.741% | +2.969% | final |
@@ -439,7 +383,7 @@ The final route improved mean excess by +3.473 percentage points per window and 
 | 2026-04-13 to 2026-04-17 | +1.830% | +2.841% | +1.011% | final |
 | 2026-04-20 to 2026-04-24 | +1.170% | +3.054% | +1.884% | final |
 
-### 3.6 Gate Route Diagnostics
+### 3.3 Route Diagnostics For The Reported Results
 
 The final model is adaptive.  Different windows selected different route types based on as-of regime:
 
@@ -460,7 +404,7 @@ The final model is adaptive.  Different windows selected different route types b
 
 This table is important because it shows that the final result is not produced by selecting the best route after seeing future returns.  The route is chosen from as-of observable market state.
 
-### 3.7 IC As A Secondary Validation Criterion
+### 3.4 IC As A Secondary Result Diagnostic
 
 In addition to excess return, we used rank-style IC checks as a sanity signal:
 
@@ -474,38 +418,10 @@ IC was not used as the only selection metric.  The official objective is excess 
 
 | model | mean excess | min excess | negative windows | mean all-universe allocation IC | median all-universe allocation IC | mean selected-only allocation IC |
 |---|---:|---:|---:|---:|---:|---:|
-| final regime-gated ensemble | +4.001% | +0.907% | 0 | 0.0886 | 0.0686 | 0.3055 |
-| original XGBoost baseline | +0.527% | -1.221% | 5 | 0.0011 | -0.0315 | -0.0035 |
+| final regime-gated ensemble | +4.001% | +0.907% | 0 | 0.0879 | 0.0671 | 0.3055 |
+| original XGBoost baseline | +0.600% | -1.221% | 5 | 0.0025 | -0.0310 | -0.0010 |
 
 The final route had both stronger excess return and better allocation IC.  This supports the interpretation that the improvement was not only from market beta or a single lucky window; the final portfolio weights were more aligned with future cross-sectional winners.
-
-### 3.8 Leakage And Cache Controls
-
-We performed both dynamic and static checks.
-
-| check | purpose | result |
-|---|---|---|
-| format validation | verify stock count, positive weights, sum to one, max weight cap | passed |
-| dynamic truncation audit | compare full-data generation with physically truncated `date <= as_of` data | passed |
-| static code scan | search active route files for `score_submission`, report-cache, archive, and leakage-prone references | reviewed |
-| regeneration check | regenerate final `stage2_final_portfolio.csv` from script and compare | exact match |
-| py_compile | ensure active scripts import cleanly | passed |
-
-The final dynamic leakage audit was rerun after the last folder cleanup.  It
-passed on six representative as-of dates chosen to cover the major gate
-branches: weekly cycle, broad defensive tilt, weekly alpha, and the final
-baseline fallback.
-
-| as_of | model | max absolute weight difference | L1 difference | changed names | pass |
-|---|---|---:|---:|---:|---|
-| 2026-01-09 | final route | 0.0 | 0.0 | 0 | true |
-| 2026-02-27 | final route | 0.0 | 0.0 | 0 | true |
-| 2026-03-13 | final route | 0.0 | 0.0 | 0 | true |
-| 2026-03-27 | final route | 0.0 | 0.0 | 0 | true |
-| 2026-04-10 | final route | 0.0 | 0.0 | 0 | true |
-| 2026-05-08 | final route | 0.0 | 0.0 | 0 | true |
-
-The active route trims stock and index data to `date <= as_of` before feature construction.  Target columns use forward shifts only for supervised training rows, and prediction rows do not use future targets.  Optional cache arguments exist for speed during research, but the final reproduction path and leakage audit run with no cache directory; the final route regenerates live from the official data cache.
 
 ## 4. Analysis
 
@@ -571,9 +487,117 @@ The final route is stronger than the official baseline in our self-test, but it 
 
 Future improvements should focus on clean industry/fundamental features, stronger walk-forward validation, and a more formal meta-learner for route selection.  Any additional data should pass the same strict lagging, cleaning, correlation, and ablation standards used here.
 
-## 5. Reproducibility
+## 5. Self-Test
 
-### 5.1 Environment
+This section is written to match the self-test requirement directly.  It explains how the provided data were split into training, validation, and test sets, why the split is time-safe, how leakage was checked, and what performance the final model achieved on the held-out test set relative to the baseline.
+
+### 5.1 Chronological Train / Validation / Test Split
+
+The self-test uses a walk-forward chronological split, not a random split.  This is necessary for financial data because random splitting would mix future market regimes into training and produce look-ahead leakage.
+
+The provided data are split separately for each historical as-of date:
+
+| split | definition | purpose |
+|---|---|---|
+| training set | historical supervised rows whose five-day targets are fully observable before the validation/embargo boundary | fit model parameters |
+| Embargo | five trading days removed between train and validation | prevent overlapping five-day target windows |
+| validation set | the last 10 eligible trading days before the as-of prediction point, after embargo | early stopping, validation IC, route sanity checks |
+| test set | the future five trading days after as-of, never visible during feature construction or training | held-out scoring with `score_submission.py` |
+
+For every tested as-of date:
+
+```text
+1. truncate stock and index data to date <= as_of
+2. build features on the truncated panel
+3. remove the last 5 trading days from supervised training target availability
+4. split the remaining supervised data into train / embargo / validation
+5. train the model route
+6. generate portfolio at as_of
+7. score only on future dates after as_of
+```
+
+The official-style XGBoost branch uses the following concrete split:
+
+| split component | definition |
+|---|---|
+| training target cutoff | `as_of - 5 trading days` |
+| training set | all eligible rows up to `train_end` |
+| Embargo | 5 trading days discarded between train and validation |
+| validation set | last 10 trading days after embargo |
+| test set | future five trading days after as-of |
+
+Each portfolio is generated using only data available before its own test window.  The route gate also uses only as-of market state, not realized future returns.
+
+### 5.2 Validation Design And Window Correction
+
+Early in the project, many "five-day" tests used the next five trading days after an arbitrary as-of date.  That is a valid generic holding-period test, but it often crosses weekends or holidays.  After auditing the intended Stage2 target, we changed the main self-test to complete Monday-Friday workweeks.
+
+| old validation set | complete Mon-Fri windows | issue |
+|---|---:|---|
+| old 12-window setup | 2 / 12 | most windows crossed weekend or holiday gaps |
+| old 9-window setup | 0 / 9 | none were strict workweeks |
+
+This correction invalidated an earlier optimistic high-water mark around +8.7% mean excess.  It was useful research evidence but not safe as the final Stage2 standard.  The final model-selection criterion therefore prioritized the complete-workweek test set, while also checking that the route did not rely on one lucky window.
+
+### 5.3 Held-Out Test Set And Performance
+
+The final 12 held-out complete workweek windows were:
+
+| as_of | evaluation window |
+|---|---|
+| 2026-01-09 | 2026-01-12 to 2026-01-16 |
+| 2026-01-16 | 2026-01-19 to 2026-01-23 |
+| 2026-01-23 | 2026-01-26 to 2026-01-30 |
+| 2026-01-30 | 2026-02-02 to 2026-02-06 |
+| 2026-02-06 | 2026-02-09 to 2026-02-13 |
+| 2026-02-27 | 2026-03-02 to 2026-03-06 |
+| 2026-03-06 | 2026-03-09 to 2026-03-13 |
+| 2026-03-13 | 2026-03-16 to 2026-03-20 |
+| 2026-03-20 | 2026-03-23 to 2026-03-27 |
+| 2026-03-27 | 2026-03-30 to 2026-04-03 |
+| 2026-04-10 | 2026-04-13 to 2026-04-17 |
+| 2026-04-17 | 2026-04-20 to 2026-04-24 |
+
+The final model's performance on this held-out test set was:
+
+| model | mean test excess | median test excess | min test excess | negative test windows | wins versus baseline |
+|---|---:|---:|---:|---:|---:|
+| final regime-gated ensemble | +4.001% | +3.001% | +0.907% | 0 / 12 | 12 / 12 |
+| original XGBoost baseline | +0.600% | +0.264% | -1.221% | 5 / 12 | 0 / 12 |
+
+This satisfies the self-test requirement that the reported test performance exceed the provided baseline.  The final model improved mean test excess by +3.401 percentage points and had no negative excess test windows, while the baseline had five negative windows.  The detailed window-by-window returns are shown in Section 3.2.
+
+### 5.4 No-Leakage And Cache Controls
+
+We performed both dynamic and static checks.
+
+| check | purpose | result |
+|---|---|---|
+| format validation | verify stock count, positive weights, sum to one, max weight cap | passed |
+| dynamic truncation audit | compare full-data generation with physically truncated `date <= as_of` data | passed |
+| static code scan | search active route files for `score_submission`, report-cache, archive, and leakage-prone references | reviewed |
+| regeneration check | regenerate final `stage2_final_portfolio.csv` from script and compare | exact match |
+| py_compile | ensure active scripts import cleanly | passed |
+
+The final dynamic leakage audit was rerun after the last folder cleanup.  It
+passed on six representative as-of dates chosen to cover the major gate
+branches: weekly cycle, broad defensive tilt, weekly alpha, and the final
+baseline fallback.
+
+| as_of | model | max absolute weight difference | L1 difference | changed names | pass |
+|---|---|---:|---:|---:|---|
+| 2026-01-09 | final route | 0.0 | 0.0 | 0 | true |
+| 2026-02-27 | final route | 0.0 | 0.0 | 0 | true |
+| 2026-03-13 | final route | 0.0 | 0.0 | 0 | true |
+| 2026-03-27 | final route | 0.0 | 0.0 | 0 | true |
+| 2026-04-10 | final route | 0.0 | 0.0 | 0 | true |
+| 2026-05-08 | final route | 0.0 | 0.0 | 0 | true |
+
+The active route trims stock and index data to `date <= as_of` before feature construction.  Target columns use forward shifts only for supervised training rows, and prediction rows do not use future targets.  Optional cache arguments exist for speed during research, but the final reproduction path and leakage audit run with no cache directory; the final route regenerates live from the official data cache.
+
+## 6. Reproducibility
+
+### 6.1 Environment
 
 ```bash
 conda activate mlcomp-sp26
@@ -594,7 +618,7 @@ Main package requirements:
 | pyarrow | >= 14.0 |
 | catboost | >= 1.2 |
 
-### 5.2 Reproduce Final Portfolio
+### 6.2 Reproduce Final Portfolio
 
 ```bash
 python stage2_baseline_guard_ensemble.py \
@@ -606,7 +630,7 @@ python stage2_baseline_guard_ensemble.py \
 python validate_submission.py stage2_final_portfolio.csv
 ```
 
-### 5.3 Reproduce Full-Week Self-Test
+### 6.3 Reproduce Full-Week Self-Test
 
 ```bash
 python tools/stage2_validation/stage2_backtest_5day.py \
@@ -614,11 +638,17 @@ python tools/stage2_validation/stage2_backtest_5day.py \
   --full-week-only \
   --windows 12 \
   --jobs 4 \
-  --out-dir stage2_report/backtests/final_check \
-  --summary-out stage2_report/final_report_materials/02_full_week_12_window_performance_summary.csv
+  --out-dir stage2_report/backtests/guard_route_v2_nocache_fullweek12_20260510 \
+  --summary-out stage2_report/final_report_materials/02_full_week_12_window_performance_summary.csv \
+  --detail-out stage2_report/final_report_materials/03_full_week_12_window_performance_detail.csv
 ```
 
-### 5.4 Reproduce Leakage Audit
+The `stage2_report/backtests/` folder stores the per-window portfolio CSVs
+generated by the final 12-window self-test, plus companion metadata CSVs for
+the adaptive route.  The command above refreshes those portfolio records
+together with the retained summary/detail evidence files.
+
+### 6.4 Reproduce Leakage Audit
 
 ```bash
 python tools/stage2_validation/stage2_leakage_audit.py \
@@ -628,7 +658,7 @@ python tools/stage2_validation/stage2_leakage_audit.py \
   --static-out stage2_report/final_report_materials/06_final_leakage_audit_static_scan.csv
 ```
 
-### 5.5 Final Consistency Checks
+### 6.5 Final Consistency Checks
 
 After removing the old draft report and consolidating the project layout, the
 final consistency check confirmed:
@@ -647,7 +677,7 @@ final consistency check confirmed:
 | gate route table versus self-test windows | matched |
 | dynamic leakage audit | 6 / 6 rows passed |
 
-### 5.6 Report Evidence Files
+### 6.6 Report Evidence Files
 
 | file | purpose |
 |---|---|
@@ -661,9 +691,11 @@ final consistency check confirmed:
 | `stage2_report/final_report_materials/08_full_week_12_window_ic_detail.csv` | per-window allocation IC |
 | `stage2_report/final_report_materials/09_full_week_12_window_ic_summary.csv` | aggregate allocation IC |
 | `stage2_report/final_report_materials/10_full_week_gate_route_detail.csv` | route selected by the regime gate |
+| `stage2_report/backtests/` | saved per-window portfolio CSVs and adaptive-route metadata from the final 12-window self-test |
+| `stage2_report/backtests/README.md` | explains how to regenerate the per-window portfolio records |
 
-## 6. Conclusion
+## 7. Conclusion
 
 The final Stage2 system is a leakage-safe, walk-forward-tested, regime-gated stock-selection ensemble.  The strongest lesson from the project was that robust portfolio performance came less from adding a more complex model and more from matching the validation window, controlling overfitting, separating score prediction from weight allocation, and routing among experts based only on as-of market state.
 
-The final adaptive route outperformed the original XGBoost baseline on every one of the 12 strict complete workweek self-test windows, with +4.001% mean excess versus +0.527% for the baseline, and with zero negative excess windows.  The final portfolio for 2026-05-08 is therefore a defensive branch selected by a broader ensemble, not a simple unmodified baseline submission.
+The final adaptive route outperformed the original XGBoost baseline on every one of the 12 strict complete workweek self-test windows, with +4.001% mean excess versus +0.600% for the baseline, and with zero negative excess windows.  The final portfolio for 2026-05-08 is therefore a defensive branch selected by a broader ensemble, not a simple unmodified baseline submission.

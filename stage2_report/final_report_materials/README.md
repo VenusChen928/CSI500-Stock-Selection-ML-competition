@@ -30,7 +30,10 @@ It is intentionally small and ordered by report-writing flow.
 The root-level `final_report.md` is the expanded Markdown report source that
 combines these materials into the final narrative.
 
-Large per-window generated portfolio CSVs are intentionally not retained in
-this clean submission layout.  Files such as
-`03_full_week_12_window_performance_detail.csv` preserve the numeric results
-and the transient generation names for traceability.
+Per-window generated portfolio CSVs from the final 12-window self-test are
+kept under `stage2_report/backtests/`, with companion adaptive-route meta CSVs.
+`03_full_week_12_window_performance_detail.csv` preserves the numeric results
+and links each row to the corresponding portfolio file.  To refresh those CSVs,
+use the full-week self-test command in the root `README.md`.  To refresh
+allocation IC after a backtest rerun, use
+`tools/stage2_validation/stage2_allocation_ic.py`.

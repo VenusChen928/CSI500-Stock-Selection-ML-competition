@@ -7,7 +7,6 @@ than the LSTM regime route and serves as a regularized stage2 challenger.
 from __future__ import annotations
 
 import argparse
-import sys
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -15,11 +14,6 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent
-STAGE2_SCRIPTS = ROOT / "stage2_report" / "scripts"
-if str(STAGE2_SCRIPTS) not in sys.path:
-    sys.path.insert(0, str(STAGE2_SCRIPTS))
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 
 from baseline_xgboost import FORWARD_HORIZON, MIN_STOCKS
 from features import (

@@ -1,0 +1,2017 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,top=0.86in,bottom=0.92in,left=0.82in,right=0.82in,headheight=22pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{fancyvrb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{etoolbox}
+\usepackage{pdflscape}
+\usepackage{ragged2e}
+\usepackage{seqsplit}
+
+\definecolor{reportBlack}{HTML}{111111}
+\definecolor{reportGray}{HTML}{666666}
+\definecolor{ruleGray}{HTML}{BDBDBD}
+\definecolor{tableHead}{HTML}{F2F4F7}
+\definecolor{codeBg}{HTML}{F7F7F7}
+\definecolor{linkBlue}{HTML}{1F4E79}
+
+\hypersetup{colorlinks=true, linkcolor=linkBlue, urlcolor=linkBlue, citecolor=linkBlue}
+\setcounter{secnumdepth}{-\maxdimen}
+\urlstyle{same}
+\setlength{\emergencystretch}{4em}
+\tolerance=2000
+\hbadness=2000
+\sloppy
+\hyphenation{Con-fi-gu-ra-tion Im-ple-men-ta-tion Eval-u-a-tion Re-pro-duc-i-bil-i-ty}
+\setstretch{1.05}
+\setlist[itemize]{leftmargin=1.2em,itemsep=2pt,topsep=2pt}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=2pt,topsep=2pt}
+\captionsetup{labelfont=bf,font=small}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{reportGray}CSI500 Stock Selection --- Project Report}
+\fancyhead[R]{\small\color{reportGray}ML Competition \textperiodcentered{} Spring 2026}
+\fancyfoot[C]{\small\color{reportGray}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{ruleGray}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{ruleGray}\leaders\hrule height \footrulewidth\hfill}}
+
+\titleformat{\section}{\Large\bfseries\color{reportBlack}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{reportBlack}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{reportBlack}}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.6em}{0.6em}
+\titlespacing*{\subsection}{0pt}{1.1em}{0.4em}
+\titlespacing*{\subsubsection}{0pt}{0.8em}{0.25em}
+
+\renewcommand{\arraystretch}{1.18}
+\setlength{\extrarowheight}{2pt}
+\setlength{\tabcolsep}{4.5pt}
+\setlength{\arrayrulewidth}{0.35pt}
+\arrayrulecolor{ruleGray}
+\AtBeginEnvironment{longtable}{%
+  \footnotesize
+  \setlength{\tabcolsep}{2.4pt}%
+  \renewcommand{\arraystretch}{1.30}%
+}
+\AfterEndEnvironment{longtable}{%
+  \normalsize
+  \setlength{\tabcolsep}{4.5pt}%
+  \renewcommand{\arraystretch}{1.18}%
+}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{Z}{>{\Centering\arraybackslash}X}
+\newcolumntype{R}{>{\Centering\arraybackslash}X}
+\newcommand{\code}[1]{{\ttfamily\footnotesize\seqsplit{#1}}}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+
+\newcommand{\studentName}{Yueyao Chen, yc7009}
+\newcommand{\reportTitle}{CSI500 Stock Selection}
+\newcommand{\reportSubtitle}{Final Report}
+
+\begin{document}
+
+\begin{titlepage}
+\thispagestyle{fancy}
+\centering
+\vspace*{\fill}
+{\Huge\bfseries \reportTitle\par}
+\vspace{0.35cm}
+{\LARGE\color{reportGray}\reportSubtitle\par}
+\vspace{0.9cm}
+{\Large \studentName\par}
+\vspace*{\fill}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\textbf{Project:} CSI500 Stock Selection ML Competition, Spring 2026\\
+\textbf{Final Stage2 portfolio:} \code{stage2\_final\_portfolio.csv}\\
+\textbf{Final as-of date:} 2026-05-08\\
+\textbf{Final production entry point:}
+\code{stage2\_baseline\_guard\_ensemble.py}\\
+\textbf{Local data coverage:} 2023-01-03 to 2026-05-08
+
+\section{Executive Summary}\label{executive-summary}
+
+The task is to submit a long-only CSI500 portfolio for a future holding
+window. The submission file contains only two columns,
+\code{stock\_code} and \code{weight}; the scoring script then
+computes the realized portfolio return over the evaluation window and
+subtracts the CSI500 benchmark return. Therefore, the modeling problem
+has two separate layers:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Predict a cross-sectional ordering or confidence score for stocks
+  using only information available at the submission date.
+\item
+  Convert those scores into a valid portfolio with at least 30
+  positive-weight stocks, non-negative weights, weights summing to one,
+  and no single stock above the 10\% cap.
+\end{enumerate}
+
+The final Stage2 route is a \textbf{Regime-gated ensemble}. It contains
+several candidate experts, including an official-style XGBoost fallback,
+a LightGBM/XGBoost tree consensus, a weekly alpha overlay, a full-week
+cycle tree, and meta/hybrid fallback routes. A market-state gate chooses
+the route using only as-of observable index and breadth features. For
+the final as-of date, 2026-05-08, the gate selected the defensive
+official-style XGBoost branch because the market looked like a broad
+overheated rebound.
+
+On the final strict self-test of 12 complete Monday-Friday five-day
+windows, the final adaptive route achieved:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1304}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1739}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1739}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1739}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1739}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1739}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Model
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Mean excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Median excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Min excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Max excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Negative windows
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Final regime-gated ensemble & +4.001\% & +3.001\% & +0.907\% & +12.308\%
+& 0 / 12 \\
+\hline
+Original XGBoost baseline & +0.600\% & +0.264\% & -1.221\% & +2.916\% &
+5 / 12 \\
+\end{longtable}
+
+The final route improved both the average excess return and the downside
+floor relative to the original baseline. The final report intentionally
+presents failed attempts as well, because many high-looking experiments
+were later rejected after stricter window definition and leakage checks.
+
+The logic of the final method is:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Step
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Decision
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Why it comes next
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Scoring analysis & Model outputs weights, while
+\code{score\_submission.py} computes realized excess return &
+Separates prediction from evaluation \\
+\hline
+Factor design & Build lagged price, liquidity, risk, market-relative,
+and weekly-cycle signals & Defines what the model is allowed to know at
+as-of \\
+\hline
+Model search & Test XGBoost, LightGBM, CatBoost, LSTM, direct
+rank/weight learning, and hybrids & Identifies which learners are stable
+versus regime-sensitive \\
+\hline
+Validation correction & Switch from generic five-trading-day windows to
+complete Monday-Friday self-test windows & Aligns the model-selection
+test with the Stage2 objective \\
+\hline
+Final route & Use an as-of regime gate to choose among experts & Avoids
+forcing one model into every market state \\
+\hline
+Portfolio shape & Choose top-k and weight concentration conditional on
+the selected route & Converts scores into a compliant, risk-controlled
+submission \\
+\end{longtable}
+
+\section{1. Factors}\label{factors}
+
+\subsection{1.1 Prediction Target And Scoring
+Definition}\label{prediction-target-and-scoring-definition}
+
+The official scoring script applies portfolio weights at the open of the
+evaluation start date and holds through the close of the evaluation end
+date. For stock (i), the realized return is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r\_i = close\_i(end) / close\_i(day\_before\_start) {-} 1}
+\end{Highlighting}
+\end{Shaded}
+
+The portfolio return is the weighted sum of realized stock returns:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{portfolio\_return = sum\_i weight\_i * r\_i}
+\end{Highlighting}
+\end{Shaded}
+
+The official competition metric is excess return:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{excess\_return = portfolio\_return {-} CSI500\_benchmark\_return}
+\end{Highlighting}
+\end{Shaded}
+
+This means the model does not need to output excess return directly. It
+outputs stock weights. The excess return is computed only after future
+data become known in \code{score\_submission.py}.
+
+During development, we tested three target designs:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Target design
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Implementation idea
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Result
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Final decision
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Raw future return & Predict \code{target\_5d} and rank stocks by
+predicted return & Stable, close to official baseline, useful fallback &
+Retained \\
+\hline
+Future excess return & Predict
+\code{target\_excess\_5d\ =\ stock\ future\ return\ -\ index\ future\ return}
+& Useful for weekly cycle experts & Retained in specialized route \\
+\hline
+Direct future rank/weight & Train toward future rank or synthetic
+optimal weight & Unstable; some portfolios became too equal-like or too
+noisy & Rejected as primary route \\
+\end{longtable}
+
+The final route separates \textbf{Prediction} from \textbf{Portfolio
+construction}. This was more robust than directly learning weights,
+because the ``true weight'' is not an observed label in the data; it is
+an artificial transformation of future returns and can amplify noise.
+
+\subsection{1.2 Official Data Used}\label{official-data-used}
+
+The final production route uses only the official local data cache.
+External data were explored, cleaned, and tested, but not promoted into
+the final route because they did not improve both mean excess and
+downside stability.
+
+\begin{longtable}[]{@{}|>{\RaggedRight\arraybackslash}m{0.30\linewidth}|>{\RaggedRight\arraybackslash}m{0.42\linewidth}|>{\Centering\arraybackslash}m{0.18\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{Data item}} & \multicolumn{1}{c|}{\textbf{File}} & \multicolumn{1}{c|}{\textbf{Value}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Stock daily panel & \code{data/prices.parquet} & 397,757 rows \\
+\hline
+Unique stocks & \code{data/prices.parquet} & 499 \\
+\hline
+Trading dates & \code{data/prices.parquet} & 807 \\
+\hline
+Date range & \code{data/prices.parquet} & 2023-01-03 to 2026-05-08 \\
+\hline
+Index daily panel & \code{data/index.parquet} & 807 rows \\
+\hline
+Constituent list & \code{data/constituents.csv} & 499 rows \\
+\end{longtable}
+
+The core stock data contain daily OHLCV-style fields such as open, high,
+low, close, volume, amount, and turnover. The index data provide CSI500
+close and return features used for benchmark-relative signals.
+
+\subsection{1.3 Core Feature Set}\label{core-feature-set}
+
+The production baseline path uses a compact set of technical and
+cross-sectional features defined in \code{features.py} as
+\code{CORE\_FEATURE\_COLUMNS}.
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Feature group
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Features
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Rationale
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Short and medium returns & \code{ret\_1d}, \code{ret\_5d},
+\code{ret\_10d}, \code{ret\_20d}, \code{ret\_60d} & Capture
+momentum, reversal, and trend persistence \\
+\hline
+Volatility and risk & \code{vol\_20d} & Avoid stocks whose recent risk
+dominates signal \\
+\hline
+Liquidity and activity & \code{volume\_z\_20d},
+\code{turnover\_ma\_20d} & Identify abnormal trading activity and
+tradeability \\
+\hline
+Trend location & \code{close\_over\_ma20}, \code{close\_over\_ma60},
+\code{rsi\_14} & Measure overextension versus moving averages \\
+\hline
+Cross-sectional ranks & \code{ret\_5d\_rank}, \code{ret\_20d\_rank},
+\code{vol\_20d\_rank} & Normalize signals across a trading day \\
+\end{longtable}
+
+The compact core was retained because blindly adding features repeatedly
+improved one or two windows while hurting the out-of-sample floor. Tree
+models can use both raw and ranked features; mechanically dropping
+highly correlated raw/rank pairs reduced performance in several route
+checks.
+
+\subsection{1.4 Expanded Feature Families
+Tested}\label{expanded-feature-families-tested}
+
+Several richer feature groups were implemented and used by specialized
+experts or rejected after ablation.
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Feature family
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Examples
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Why tested
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Final use
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Momentum and reversal & \code{ret\_3d}, \code{mom\_accel\_5\_20},
+\code{ret\_60d\_rank} & Balance short-term bursts with medium trend &
+Used in tree/weekly experts \\
+\hline
+Risk and drawdown & \code{vol\_ratio\_5\_20},
+\code{downside\_vol\_20d}, \code{drawdown\_20d} & Penalize unstable
+names and recent crash risk & Used in defensive routes \\
+\hline
+Market-relative features & \code{excess\_ret\_5d},
+\code{excess\_ret\_20d}, \code{beta\_60d},
+\code{residual\_ret\_20d} & Separate stock alpha from market beta &
+Used in weekly and quality routes \\
+\hline
+Flow and price-volume features & \code{amount\_z\_20d},
+\code{obv\_20d}, \code{price\_volume\_corr\_20d} & Approximate
+money-flow confirmation & Used in weekly alpha overlay \\
+\hline
+Intraday and gap features & \code{gap\_mean\_20d},
+\code{intraday\_mean\_20d}, \code{overnight\_vol\_20d} & Detect
+reopening risk and persistent demand & Used in weekly alpha
+experiments \\
+\hline
+Calendar cycle features & Monday/Friday, month start/end, post-gap,
+full-workweek flags & Align Stage2 with five-day workweek behavior &
+Used in weekly cycle route \\
+\hline
+External/open data & Valuation, regime, fund-flow fields & Potentially
+add non-price information & Rejected from final \\
+\hline
+Graph/peer features & Correlation-neighbor return features & Model group
+influence among stocks & Rejected from final \\
+\end{longtable}
+
+\subsection{1.5 Weekly Cycle Features}\label{weekly-cycle-features}
+
+After we realized that the final Stage2 target was better represented by
+complete five-day workweeks, we added known-in-advance calendar cycle
+features. These do not use future prices. They are functions of the
+as-of date and the next five business days:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Weekly feature
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Interpretation
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+\code{eval\_starts\_monday} & Whether the holding window begins on
+Monday \\
+\hline
+\code{eval\_ends\_friday} & Whether the holding window ends on
+Friday \\
+\hline
+\code{eval\_is\_full\_workweek} & Whether the evaluation is a complete
+Monday-Friday week \\
+\hline
+\code{weekend\_gap\_days} & Length of the non-trading gap before the
+holding window \\
+\hline
+\code{eval\_month\_start} and \code{eval\_month\_end} & Month-start
+or month-end flow regime \\
+\hline
+\code{weekly\_risk\_appetite} & Interaction of Monday risk appetite
+with recent returns and OBV \\
+\hline
+\code{weekly\_friday\_derisk} & Friday de-risking tilt using trend
+quality and volatility \\
+\hline
+\code{month\_start\_flow} & Month-start liquidity and flow
+confirmation \\
+\hline
+\code{month\_end\_defensive} & Month-end defensive tilt \\
+\hline
+\code{post\_gap\_reopen\_flow} & Reopening behavior after weekend or
+holiday gaps \\
+\hline
+\code{weekly\_carry\_quality} & Full-week carry quality using OBV,
+trend, close location, and volatility \\
+\end{longtable}
+
+These features were used only in the weekly expert route. They were not
+forced into the compact baseline fallback, because the fallback
+performed best as a simpler and more regularized model.
+
+\subsection{1.6 Feature Normalization And Correlation
+Handling}\label{feature-normalization-and-correlation-handling}
+
+The final feature-processing approach was deliberately moderate:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Processing step
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Implementation
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Reason
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Rolling features & Computed only from current and historical
+observations per stock & Avoid future leakage \\
+\hline
+Cross-sectional rank features & Per-date rank percentile for selected
+signals & Reduce scale drift across market regimes \\
+\hline
+Robust normalization in weekly route & Rank-normalize stock-level
+features within each date & Stabilize tree learners \\
+\hline
+Correlation filtering in weekly route & Spearman correlation filter,
+threshold 0.90 & Remove redundant route-specific features \\
+\hline
+Target clipping in weekly route & Clip training target at 1\% and 99\%
+quantiles & Reduce outlier dominance \\
+\hline
+Time decay & Half-life 180 days in weekly route & Emphasize recent
+regimes without discarding history \\
+\end{longtable}
+
+We did not perform aggressive de-correlation globally. In this project,
+high feature correlation did not always mean a feature was useless for
+tree splits. The safer compromise was to use compact features for the
+baseline route and correlation filtering only in richer specialized
+routes.
+
+\section{2. Models}\label{models}
+
+\subsection{2.1 Model Development
+Timeline}\label{model-development-timeline}
+
+The final route came from a long sequence of model and feature
+experiments. The important part is that the project did not move
+linearly; some promising paths were later rejected after better
+validation.
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2500}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Phase
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Experiment
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Observation
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Decision
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Baseline understanding & Read \code{score\_submission.py} and official
+XGBoost baseline & Model predicts scores/weights; score script computes
+excess return & Keep prediction and scoring separate \\
+\hline
+Official XGBoost & \code{baseline\_xgboost.py}, raw 5-day target,
+top-50 rank weights & Simple and stable, but weak mean excess & Keep as
+reference and fallback \\
+\hline
+Direct rank/weight learning & Target future rank and synthetic target
+weight & Weight labels were unstable and sometimes produced near-equal
+weights & Reject as main route \\
+\hline
+Feature pruning & Test core OHLCV, ranks, volatility, liquidity, trend,
+RSI & Compact feature set had better floor than broad stuffing & Keep
+compact core \\
+\hline
+LSTM sequence model & Learn short-term sequences and confidence & Strong
+on several early rolling windows & Not stable across horizon changes \\
+\hline
+Layered/gated LSTM & LSTM plus LightGBM confirmation and confidence
+weights & Useful for Stage1 three-day objective & Not final for
+Stage2 \\
+\hline
+LightGBM/XGBoost consensus & Blend two tree portfolio rankings &
+Improved some regimes & Retained as expert ingredient \\
+\hline
+CatBoost robust challenger & Quantile/MAE-style robust model & Not
+competitive enough standalone & Keep as rejected comparison \\
+\hline
+Regularized consensus & Stricter tree ensemble and risk overlays &
+Helped in narrow regimes & Retained as fallback route \\
+\hline
+Open-data enhancement & Strict lagging/cleaning of valuation, regime,
+fund flow & Noisy, did not improve mean and min together & Reject from
+final \\
+\hline
+Full-week correction & Change validation to complete Monday-Friday
+windows & Invalidated old optimistic results & Reset Stage2 standard \\
+\hline
+Weekly alpha route & Flow, OBV, low-vol confidence, calendar cycle &
+Useful in selected regimes & Retained as expert \\
+\hline
+Final regime gate & Route selection by as-of market state & Best strict
+12-window mean and floor & Final route \\
+\end{longtable}
+
+\subsection{2.2 Official-Style XGBoost
+Baseline}\label{official-style-xgboost-baseline}
+
+The baseline model predicts raw five-day future stock return, then ranks
+the cross-section.
+
+\begin{longtable}[]{@{}|>{\RaggedRight\arraybackslash}m{0.58\linewidth}|>{\Centering\arraybackslash}m{0.32\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{Setting}} & \multicolumn{1}{c|}{\textbf{Value}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Target & \code{target\_5d} \\
+\hline
+estimators & 400 \\
+\hline
+Max depth & 5 \\
+\hline
+Learning rate & 0.05 \\
+\hline
+subsample & 0.8 \\
+\hline
+Colsample by tree & 0.8 \\
+\hline
+Min child weight & 10 \\
+\hline
+L2 regularization & 1.0 \\
+\hline
+Tree method & \code{hist} \\
+\hline
+Validation days & 10 trading days \\
+\hline
+Embargo & 5 trading days \\
+\hline
+Early stopping & 30 rounds \\
+\hline
+Default portfolio size & 50 names \\
+\end{longtable}
+
+The split for each as-of date is time ordered:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{available data up to as\_of}
+\NormalTok{train target cutoff = as\_of {-} 5 trading days}
+
+\NormalTok{[ historical train rows ] [ 5{-}day embargo ] [ 10{-}day validation rows ] [ as\_of prediction ]}
+\end{Highlighting}
+\end{Shaded}
+
+The embargo is important because the target for date (t) uses prices
+through (t+5). Without the embargo, training labels could overlap with
+validation prices.
+
+\subsection{2.3 LightGBM / XGBoost Tree
+Consensus}\label{lightgbm-xgboost-tree-consensus}
+
+The tree consensus route was inspired by the idea that different tree
+learners can agree on robust names even when raw predicted scores
+differ. The route trains a tuned XGBoost and a LightGBM-style portfolio
+helper, then combines their selected stocks and ranks.
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Component
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Role
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Tuned XGBoost & Strong tabular ranking model \\
+\hline
+LightGBM & Fast gradient boosting challenger \\
+\hline
+Consensus rank & Prefer names selected by both models \\
+\hline
+Rank-weight layer & Avoid pathological raw-score scaling \\
+\hline
+Optional factor reweight & Apply drawdown/vol/quality tilts only when
+regime gate allows \\
+\end{longtable}
+
+The most useful finding was that model averaging alone was not
+sufficient. The consensus needed a portfolio layer that preserved
+conviction while controlling concentration.
+
+\subsection{2.4 Weekly Cycle Tree
+Expert}\label{weekly-cycle-tree-expert}
+
+The weekly cycle route trains on all available five-trading-day targets
+but adds features describing the next five-business-day calendar shape.
+It is not trained only on full weeks, which helps avoid overfitting to
+too few examples.
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2000}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2667}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2667}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 8\tabcolsep - 5\arrayrulewidth) * \real{0.2667}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Setting
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+LightGBM
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+XGBoost
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+CatBoost challenger
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Robust loss & Huber & Pseudo-Huber & Quantile \\
+\hline
+Estimators/iterations & 650 & 520 & 520 \\
+\hline
+Learning rate & 0.022 & 0.022 & 0.025 \\
+\hline
+Depth/leaves & 47 leaves & Depth 3 & Depth 5 \\
+\hline
+Min child / leaf & 70 & 45 & L2 leaf reg 10 \\
+\hline
+subsample & 0.82 & 0.82 & Bagging temp 0.35 \\
+\hline
+colsample & 0.70 & 0.70 & Ordered boosting style \\
+\hline
+regularization & Alpha 0.35, lambda 5.0 & Alpha 0.20, lambda 6.0 &
+Random strength 1.0 \\
+\end{longtable}
+
+The final weekly cycle configuration used the LightGBM/XGBoost pair, not
+CatBoost, because the robust two-tree pair gave better stability in the
+final full-week checks.
+
+\subsection{2.5 LSTM And Confidence-Weight
+Experiments}\label{lstm-and-confidence-weight-experiments}
+
+The LSTM route was developed because stock data are sequential. The main
+idea was to learn a short-term sequence representation, then combine it
+with a confidence score:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{final confidence = model agreement + rank strength {-} volatility/drawdown penalty}
+\end{Highlighting}
+\end{Shaded}
+
+For Stage1, this was useful. On the three-day validation around the
+Stage1 horizon, the best LSTM/LightGBM confidence configuration reached
+about +3.3\% mean excess on three recent windows:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.0968}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Config.
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Alpha\_lstm
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Risk penalty
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Top\_k
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Rank power
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Confidence power
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Mean excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Min excess
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Best recent Stage1 LSTM confidence & 0.95 & 0.30 & 40 & 1.35 & 3.0 &
++3.302\% & +3.246\% \\
+\end{longtable}
+
+However, this did not transfer reliably to Stage2. Once the target
+changed to strict five-day workweeks, LSTM routes became more
+regime-sensitive and could produce negative windows. The final Stage2
+route therefore keeps LSTM in the historical fallback chain but does not
+use it as the final primary expert.
+
+\subsection{2.6 Why Direct Weight Learning Was
+Rejected}\label{why-direct-weight-learning-was-rejected}
+
+Directly learning future rank and target weight looked attractive
+because the submission itself is a weight file. In practice, it caused
+two problems:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Issue
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Why it happened
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Synthetic labels are noisy & There is no true observed ``best weight'';
+any label is constructed from future returns \\
+\hline
+Weight scale instability & Small return differences can create very
+different target weights \\
+\hline
+Equal-looking portfolios & Regularization and noisy labels sometimes
+collapsed weights toward similar values \\
+\hline
+Poor transfer across horizons & 3-Day, generic 5-day, and full-week
+5-day objectives favored different shapes \\
+\end{longtable}
+
+The final design uses score/rank learning plus a separate portfolio
+allocator. This made the model easier to validate and easier to
+constrain under competition rules.
+
+\subsection{2.7 Final Regime-Gated
+Ensemble}\label{final-regime-gated-ensemble}
+
+The final production route is implemented in
+\code{stage2\_baseline\_guard\_ensemble.py}. It is a
+mixture-of-experts selector, not a simple average of all model outputs.
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Expert
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Implementation
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Role
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Official-style XGBoost fallback & \code{baseline\_xgboost.py} and
+fallback function inside final route & Stable defensive branch \\
+\hline
+LightGBM/XGBoost tree consensus & \code{stage2\_tree\_consensus.py}
+plus \code{lightgbm\_portfolio.py} and
+\code{tuned\_xgboost\_portfolio.py} & Tabular consensus branch \\
+\hline
+Weekly alpha overlay & \code{stage2\_weekly\_alpha\_overlay.py} &
+Flow/volatility/OBV style confidence branch \\
+\hline
+Weekly consensus & \code{stage2\_weekly\_consensus\_ensemble.py} &
+Combines weekly alpha and weekly cycle ideas \\
+\hline
+Weekly cycle tree & \code{stage2\_weekly\_cycle\_tree.py} & Full-week
+calendar and excess-return expert \\
+\hline
+Meta/hybrid fallback & \code{stage2\_meta\_portfolio\_ensemble.py},
+\code{stage2\_hybrid\_gate.py},
+\code{stage2\_regularized\_consensus.py},
+\code{lstm\_rank\_weight.py} & Fallback chain for non-cached routes \\
+\hline
+Broad defensive tilt & Internal final-route function & Broad low-risk
+route for mild positive flat tape \\
+\end{longtable}
+
+The gate uses only as-of observable variables:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Gate variable
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Interpretation
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+\code{idx\_ret\_5d} & Recent CSI500 index return \\
+\hline
+\code{idx\_ret\_20d} & Medium-term index trend \\
+\hline
+\code{breadth\_ret\_5d\_pos} & Fraction of stocks with positive recent
+five-day return \\
+\hline
+\code{median\_ret\_5d} & Median stock return over the recent five-day
+lookback \\
+\end{longtable}
+
+The final as-of state was:
+
+\begin{longtable}[]{@{}|>{\RaggedRight\arraybackslash}m{0.58\linewidth}|>{\Centering\arraybackslash}m{0.32\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{Field}} & \multicolumn{1}{c|}{\textbf{Value}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+As-of date & 2026-05-08 \\
+\hline
+Selected route & \code{baseline\_xgb} \\
+\hline
+Guard reason & \code{baseline\_guard\_overheated\_high\_breadth} \\
+\hline
+\code{idx\_ret\_5d} & +5.975\% \\
+\hline
+\code{idx\_ret\_20d} & +14.833\% \\
+\hline
+\code{breadth\_ret\_5d\_pos} & 70.741\% \\
+\hline
+Selected stocks & 30 \\
+\hline
+Max weight & 6.452\% \\
+\hline
+Effective names & 22.87 \\
+\hline
+Route validation rank IC & 0.0783 \\
+\end{longtable}
+
+This does not mean the final project is simply the unchanged baseline.
+It means the full gated model chose the baseline fallback for this as-of
+date because historical similar regimes favored a defensive branch over
+aggressive weekly consensus.
+
+\subsection{2.8 Portfolio Construction And
+Weighting}\label{portfolio-construction-and-weighting}
+
+The portfolio layer was tuned separately from the prediction layer. This
+is important because a model can rank stocks reasonably but still lose
+excess return if the final portfolio is too diluted, too concentrated,
+or too equal-weighted. The final portfolio is not equal-weighted.
+
+\begin{longtable}[]{@{}|>{\RaggedRight\arraybackslash}m{0.58\linewidth}|>{\Centering\arraybackslash}m{0.32\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{Metric}} & \multicolumn{1}{c|}{\textbf{Final value}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Holdings & 30 \\
+\hline
+Weight sum & 1.0000 \\
+\hline
+Max weight & 6.452\% \\
+\hline
+Min weight & 0.215\% \\
+\hline
+Effective number of names & 22.87 \\
+\hline
+Top-5 weight & 30.11\% \\
+\hline
+Top-10 weight & 54.84\% \\
+\end{longtable}
+
+The final top holdings are:
+
+\begin{longtable}[]{@{}|>{\Centering\arraybackslash}m{0.10\linewidth}|>{\Centering\arraybackslash}m{0.55\linewidth}|>{\Centering\arraybackslash}m{0.25\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{Rank}} & \multicolumn{1}{c|}{\textbf{Stock\_code}} & \multicolumn{1}{c|}{\textbf{Weight}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+1 & 688615 & 6.452\% \\
+\hline
+2 & 002624 & 6.237\% \\
+\hline
+3 & 300857 & 6.022\% \\
+\hline
+4 & 300676 & 5.806\% \\
+\hline
+5 & 688017 & 5.591\% \\
+\hline
+6 & 603341 & 5.376\% \\
+\hline
+7 & 002131 & 5.161\% \\
+\hline
+8 & 600536 & 4.946\% \\
+\hline
+9 & 300454 & 4.731\% \\
+\hline
+10 & 601615 & 4.516\% \\
+\end{longtable}
+
+The table below is a \textbf{Portfolio-shape sanity check}, not the main
+12-window model comparison. Its purpose was narrower: after the final
+2026-05-08 regime gate selected the \code{baseline\_xgb} fallback, we
+needed to decide whether that fallback branch should hold the minimum 30
+names or dilute into more stocks. To avoid tuning on the final unknown
+window, I only used historical windows where the same final gate also
+routed into the baseline-style fallback, then rescored the same fallback
+idea with \code{top\_k} set to 30, 35, 40, 50, and 60.
+
+The two historical windows used for this check were:
+
+\begin{longtable}[]{@{}|>{\Centering\arraybackslash}m{0.28\linewidth}|>{\Centering\arraybackslash}m{0.34\linewidth}|>{\RaggedRight\arraybackslash}m{0.28\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{As\_of}} & \multicolumn{1}{c|}{\textbf{Evaluation window}} & \multicolumn{1}{c|}{\textbf{Gate reason}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+2026-01-23 & 2026-01-26 to 2026-01-30 & Overheated high breadth \\
+\hline
+2026-03-20 & 2026-03-23 to 2026-03-27 & Severe broad selloff \\
+\end{longtable}
+
+Across only those two baseline-routed sanity-check windows, top30 had
+the best mean and best minimum:
+
+\begin{longtable}[]{@{}|>{\Centering\arraybackslash}m{0.29\linewidth}|>{\Centering\arraybackslash}m{0.29\linewidth}|>{\Centering\arraybackslash}m{0.29\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{Top\_k}} & \multicolumn{1}{c|}{\textbf{Mean excess}} & \multicolumn{1}{c|}{\textbf{Min excess}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+30 & +1.993\% & +1.141\% \\
+\hline
+35 & +1.831\% & +0.616\% \\
+\hline
+40 & +1.626\% & +0.153\% \\
+\hline
+50 & +1.268\% & -0.380\% \\
+\hline
+60 & +1.072\% & -0.551\% \\
+\end{longtable}
+
+The causal use of this table is therefore limited but clear: it did not
+decide the overall model, and it was not used to claim that 30 names is
+globally optimal for all regimes. It only supported the final
+fallback-branch portfolio shape. In the closest available
+baseline-routed regimes, larger portfolios diluted the XGBoost rank
+signal and lowered the floor. Since the final top30 shape stayed below
+the 10\% cap and had 22.87 effective names, I kept top30 for the final
+overheated high-breadth fallback.
+
+\section{3. Results}\label{results}
+
+This section reports how the final portfolio generator performed on
+held-out complete workweek windows relative to the original XGBoost
+baseline. The construction of the train / validation / test split and
+the no-leakage checks are documented separately in Section 5, so this
+section focuses on the empirical outcome.
+
+\subsection{3.1 Held-Out Performance Relative To
+Baseline}\label{held-out-performance-relative-to-baseline}
+
+The final route was compared with the original baseline XGBoost on the
+same 12 windows.
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.0968}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 16\tabcolsep - 9\arrayrulewidth) * \real{0.1290}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Model
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Mean excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Sum excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Median excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Min excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Max excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Count
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Negative windows
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Final regime-gated ensemble & +4.001\% & +48.006\% & +3.001\% & +0.907\%
+& +12.308\% & 12 & 0 \\
+\hline
+Original XGBoost baseline & +0.600\% & +7.194\% & +0.264\% & -1.221\% &
++2.916\% & 12 & 5 \\
+\end{longtable}
+
+The final route improved mean excess by +3.401 percentage points per
+held-out window and removed all negative excess windows. It beat the
+original baseline in all 12 test windows.
+
+\subsection{3.2 Window-By-Window Held-Out
+Results}\label{window-by-window-held-out-results}
+
+\begin{longtable}[]{@{}|>{\Centering\arraybackslash}m{0.25\linewidth}|>{\Centering\arraybackslash}m{0.15\linewidth}|>{\Centering\arraybackslash}m{0.15\linewidth}|>{\Centering\arraybackslash}m{0.15\linewidth}|>{\Centering\arraybackslash}m{0.20\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{Window}} & \multicolumn{1}{c|}{\textbf{Baseline excess}} & \multicolumn{1}{c|}{\textbf{Final excess}} & \multicolumn{1}{c|}{\textbf{Difference}} & \multicolumn{1}{c|}{\textbf{Winner}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+2026-01-12 to 2026-01-16 & +2.227\% & +2.948\% & +0.721\% & Final \\
+\hline
+2026-01-19 to 2026-01-23 & -0.581\% & +6.633\% & +7.214\% & Final \\
+\hline
+2026-01-26 to 2026-01-30 & -0.380\% & +1.141\% & +1.521\% & Final \\
+\hline
+2026-02-02 to 2026-02-06 & -0.228\% & +2.741\% & +2.969\% & Final \\
+\hline
+2026-02-09 to 2026-02-13 & +0.392\% & +6.872\% & +6.480\% & Final \\
+\hline
+2026-03-02 to 2026-03-06 & -1.221\% & +3.253\% & +4.474\% & Final \\
+\hline
+2026-03-09 to 2026-03-13 & +0.136\% & +12.308\% & +12.172\% & Final \\
+\hline
+2026-03-16 to 2026-03-20 & +1.325\% & +2.211\% & +0.886\% & Final \\
+\hline
+2026-03-23 to 2026-03-27 & +2.916\% & +3.098\% & +0.182\% & Final \\
+\hline
+2026-03-30 to 2026-04-03 & -0.392\% & +0.907\% & +1.299\% & Final \\
+\hline
+2026-04-13 to 2026-04-17 & +1.830\% & +2.841\% & +1.011\% & Final \\
+\hline
+2026-04-20 to 2026-04-24 & +1.170\% & +3.054\% & +1.884\% & Final \\
+\end{longtable}
+
+\subsection{3.3 Route Diagnostics For The Reported
+Results}\label{route-diagnostics-for-the-reported-results}
+
+The final model is adaptive. Different windows selected different route
+types based on as-of regime:
+
+\begin{longtable}[]{@{}|
+  >{\Centering\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1250}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1250}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1250}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1250}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1667}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1667}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1667}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+As\_of
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Evaluation window
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Selected route
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Guard reason
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+\code{idx\_ret\_5d}
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+\code{idx\_ret\_20d}
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Breadth
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+2026-01-09 & 2026-01-12 to 2026-01-16 & Weekly cycle tree & Extreme
+broad rebound & +7.92\% & +12.59\% & 88.78\% \\
+\hline
+2026-01-16 & 2026-01-19 to 2026-01-23 & Weekly consensus & Weekly
+consensus allowed & +2.18\% & +15.34\% & 48.10\% \\
+\hline
+2026-01-23 & 2026-01-26 to 2026-01-30 & Baseline XGBoost & Overheated
+high breadth & +4.34\% & +16.84\% & 79.76\% \\
+\hline
+2026-01-30 & 2026-02-02 to 2026-02-06 & Weekly consensus & Weekly
+consensus allowed & -2.56\% & +12.12\% & 27.25\% \\
+\hline
+2026-02-06 & 2026-02-09 to 2026-02-13 & Weekly consensus & Weekly
+consensus allowed & -2.68\% & +1.11\% & 29.86\% \\
+\hline
+2026-02-27 & 2026-03-02 to 2026-03-06 & Broad defensive tilt & Mild
+positive flat tape & +2.79\% & +3.23\% & 64.13\% \\
+\hline
+2026-03-06 & 2026-03-09 to 2026-03-13 & Weekly consensus & Weekly
+consensus allowed & -3.44\% & -1.85\% & 24.65\% \\
+\hline
+2026-03-13 & 2026-03-16 to 2026-03-20 & Weekly alpha current & Weak flat
+positive medium trend & -1.44\% & +1.15\% & 40.88\% \\
+\hline
+2026-03-20 & 2026-03-23 to 2026-03-27 & Baseline XGBoost & Severe broad
+selloff & -5.82\% & -7.88\% & 11.82\% \\
+\hline
+2026-03-27 & 2026-03-30 to 2026-04-03 & Weekly cycle tree & Long selloff
+stabilization & -0.29\% & -10.64\% & 38.68\% \\
+\hline
+2026-04-10 & 2026-04-13 to 2026-04-17 & Weekly alpha auto & Overheated
+negative medium trend & +4.79\% & -4.67\% & 73.15\% \\
+\hline
+2026-04-17 & 2026-04-20 to 2026-04-24 & Weekly consensus & Weekly
+consensus allowed & +3.07\% & +4.28\% & 64.73\% \\
+\end{longtable}
+
+This table is important because it shows that the final result is not
+produced by selecting the best route after seeing future returns. The
+route is chosen from as-of observable market state.
+
+\subsection{3.4 IC As A Secondary Result
+Diagnostic}\label{ic-as-a-secondary-result-diagnostic}
+
+In addition to excess return, we used rank-style IC checks as a sanity
+signal:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+IC type
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Definition
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Use
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Validation rank IC & Daily Spearman correlation between validation
+target and model prediction & Internal model sanity check during
+training \\
+\hline
+Allocation IC, all universe & Spearman correlation between submitted
+weights, including zeros for unheld names, and realized future stock
+returns & Checks whether portfolio allocation direction aligns with
+realized cross-sectional returns \\
+\hline
+Allocation IC, selected only & Spearman correlation between
+selected-stock weights and realized returns inside the portfolio &
+Checks whether heavier selected names outperform lighter selected
+names \\
+\end{longtable}
+
+IC was not used as the only selection metric. The official objective is
+excess return, so IC was used to diagnose ranking quality and avoid
+misleading high-return accidents.
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1111}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1481}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1481}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1481}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1481}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1481}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 14\tabcolsep - 8\arrayrulewidth) * \real{0.1481}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Model
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Mean excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Min excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Negative windows
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Mean all-universe allocation IC
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Median all-universe allocation IC
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Mean selected-only allocation IC
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Final regime-gated ensemble & +4.001\% & +0.907\% & 0 & 0.0879 & 0.0671
+& 0.3055 \\
+\hline
+Original XGBoost baseline & +0.600\% & -1.221\% & 5 & 0.0025 & -0.0310 &
+-0.0010 \\
+\end{longtable}
+
+The final route had both stronger excess return and better allocation
+IC. This supports the interpretation that the improvement was not only
+from market beta or a single lucky window; the final portfolio weights
+were more aligned with future cross-sectional winners.
+
+\section{4. Analysis}\label{analysis}
+
+\subsection{4.1 What Worked}\label{what-worked}
+
+The most successful design choices were:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Choice
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Why it worked
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Separating prediction from portfolio allocation & Prevented unstable
+synthetic weight labels from dominating training \\
+\hline
+Compact core fallback & Reduced overfitting and kept a stable defensive
+branch \\
+\hline
+Route-specific richer features & Allowed weekly alpha features without
+contaminating all regimes \\
+\hline
+As-of regime gate & Avoided forcing one model onto incompatible market
+states \\
+\hline
+Robust losses and regularization & Reduced sensitivity to outlier future
+returns \\
+\hline
+Complete full-week validation & Aligned self-test with the Stage2
+target \\
+\hline
+Leakage audits & Protected against accidentally using future information
+or cached results \\
+\end{longtable}
+
+The final route's biggest improvement came from not trying to make one
+model win every regime. The official-style XGBoost baseline is weak on
+average, but it is useful in overheated or selloff regimes. Weekly alpha
+and weekly cycle routes can be stronger when the market state is more
+normal. The gate turns this into a practical mixture-of-experts system.
+
+\subsection{4.2 What Did Not Work}\label{what-did-not-work}
+
+Several ideas looked promising but were not promoted:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Failed or limited idea
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Reason
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Direct rank/weight learning & Labels were synthetic and unstable;
+portfolio weights sometimes became too equal-like \\
+\hline
+Standalone LSTM & Strong local windows, weak horizon transfer and regime
+stability \\
+\hline
+Transformer-style deep models & Data size and validation instability
+made them too risky for final \\
+\hline
+Noisy external data & Strict cleaning did not improve mean and floor
+together \\
+\hline
+Graph/peer factors & Group influence signals were not robust enough in
+held-out windows \\
+\hline
+Blind feature expansion & Improved single windows but hurt minimum
+excess \\
+\hline
+Overly broad top-k portfolios & Diluted rank signal in the final
+fallback branch sanity check \\
+\hline
+Old generic five-day validation & Overstated performance by mixing
+weekend/holiday effects \\
+\end{longtable}
+
+The Phase 1 result was also a useful warning. The Stage1 model had a
+reasonable local backtest but underperformed the class average in the
+official 2026-05-06 to 2026-05-08 window. That pushed the Stage2 design
+toward simpler, better-regularized models and stricter self-tests.
+
+\subsection{4.3 Why The Final Route Uses Baseline XGBoost On
+2026-05-08}\label{why-the-final-route-uses-baseline-xgboost-on-2026-05-08}
+
+This was a point of confusion during development. The final route
+selected \code{baseline\_xgb} for 2026-05-08, but the final model is
+not merely the original baseline. It is a gated ensemble that sometimes
+routes to baseline when market conditions match a defensive regime.
+
+For 2026-05-08:
+
+\begin{longtable}[]{@{}|>{\RaggedRight\arraybackslash}m{0.42\linewidth}|>{\RaggedRight\arraybackslash}m{0.48\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{Signal}} & \multicolumn{1}{c|}{\textbf{Interpretation}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+\code{idx\_ret\_5d\ =\ +5.975\%} & Very strong short-term index
+rebound \\
+\hline
+\code{idx\_ret\_20d\ =\ +14.833\%} & Extended medium-term strength \\
+\hline
+\code{breadth\_ret\_5d\_pos\ =\ 70.741\%} & Broad participation \\
+\hline
+Guard reason & Overheated high-breadth rebound \\
+\end{longtable}
+
+In this state, aggressive weekly consensus can chase already crowded
+winners. Historical similar states favored a more conservative XGBoost
+fallback with 30 rank-weighted names.
+
+\subsection{4.4 Remaining Limitations}\label{remaining-limitations}
+
+The final route is stronger than the official baseline in our self-test,
+but it is not perfect.
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Limitation
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Consequence
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Only official OHLCV-style data in final route & No fundamental or
+industry structure in final submission \\
+\hline
+Regime gate is rule-based & May miss nuanced transitions \\
+\hline
+Self-test windows are limited & 12 full-week windows are useful but
+still a small sample \\
+\hline
+Final as-of selected fallback & Upside may be lower than a more
+aggressive route if rebound continues \\
+\hline
+No true industry-neutral optimizer & Sector concentration risk may
+remain \\
+\end{longtable}
+
+Future improvements should focus on clean industry/fundamental features,
+stronger walk-forward validation, and a more formal meta-learner for
+route selection. Any additional data should pass the same strict
+lagging, cleaning, correlation, and ablation standards used here.
+
+\section{5. Self-Test}\label{self-test}
+
+This section is written to match the self-test requirement directly. It
+explains how the provided data were split into training, validation, and
+test sets, why the split is time-safe, how leakage was checked, and what
+performance the final model achieved on the held-out test set relative
+to the baseline.
+
+\subsection{5.1 Chronological Train / Validation / Test
+Split}\label{chronological-train-validation-test-split}
+
+The self-test uses a walk-forward chronological split, not a random
+split. This is necessary for financial data because random splitting
+would mix future market regimes into training and produce look-ahead
+leakage.
+
+The provided data are split separately for each historical as-of date:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.2200}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.5200}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.2600}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Split
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Definition
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Purpose
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Training set & Historical supervised rows whose five-day targets are
+fully observable before the validation/embargo boundary & Fit model
+parameters \\
+\hline
+Embargo & Five trading days removed between train and validation &
+Prevent overlapping five-day target windows \\
+\hline
+Validation set & The last 10 eligible trading days before the as-of
+prediction point, after embargo & Early stopping, validation IC, route
+sanity checks \\
+\hline
+Test set & The future five trading days after as-of, never visible
+during feature construction or training & Held-out scoring with
+\code{score\_submission.py} \\
+\end{longtable}
+
+For every tested as-of date:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1. truncate stock and index data to date \textless{}= as\_of}
+\NormalTok{2. build features on the truncated panel}
+\NormalTok{3. remove the last 5 trading days from supervised training target availability}
+\NormalTok{4. split the remaining supervised data into train / embargo / validation}
+\NormalTok{5. train the model route}
+\NormalTok{6. generate portfolio at as\_of}
+\NormalTok{7. score only on future dates after as\_of}
+\end{Highlighting}
+\end{Shaded}
+
+The official-style XGBoost branch uses the following concrete split:
+
+\begin{longtable}[]{@{}|>{\RaggedRight\arraybackslash}m{0.42\linewidth}|>{\RaggedRight\arraybackslash}m{0.48\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{Split component}} & \multicolumn{1}{c|}{\textbf{Definition}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Training target cutoff & \code{as\_of\ -\ 5\ trading\ days} \\
+\hline
+Training set & All eligible rows up to \code{train\_end} \\
+\hline
+Embargo & 5 trading days discarded between train and validation \\
+\hline
+Validation set & Last 10 trading days after embargo \\
+\hline
+Test set & Future five trading days after as-of \\
+\end{longtable}
+
+Each portfolio is generated using only data available before its own
+test window. The route gate also uses only as-of market state, not
+realized future returns.
+
+\subsection{5.2 Validation Design And Window
+Correction}\label{validation-design-and-window-correction}
+
+Early in the project, many ``five-day'' tests used the next five trading
+days after an arbitrary as-of date. That is a valid generic
+holding-period test, but it often crosses weekends or holidays. After
+auditing the intended Stage2 target, we changed the main self-test to
+complete Monday-Friday workweeks.
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3000}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.4000}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3000}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Old validation set
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Complete Mon-Fri windows
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Issue
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Old 12-window setup & 2 / 12 & Most windows crossed weekend or holiday
+gaps \\
+\hline
+Old 9-window setup & 0 / 9 & None were strict workweeks \\
+\end{longtable}
+
+This correction invalidated an earlier optimistic high-water mark around
++8.7\% mean excess. It was useful research evidence but not safe as the
+final Stage2 standard. The final model-selection criterion therefore
+prioritized the complete-workweek test set, while also checking that the
+route did not rely on one lucky window.
+
+\subsection{5.3 Held-Out Test Set And
+Performance}\label{held-out-test-set-and-performance}
+
+The final 12 held-out complete workweek windows were:
+
+\begin{longtable}[]{@{}|>{\Centering\arraybackslash}m{0.42\linewidth}|>{\Centering\arraybackslash}m{0.48\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{As\_of}} & \multicolumn{1}{c|}{\textbf{Evaluation window}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+2026-01-09 & 2026-01-12 to 2026-01-16 \\
+\hline
+2026-01-16 & 2026-01-19 to 2026-01-23 \\
+\hline
+2026-01-23 & 2026-01-26 to 2026-01-30 \\
+\hline
+2026-01-30 & 2026-02-02 to 2026-02-06 \\
+\hline
+2026-02-06 & 2026-02-09 to 2026-02-13 \\
+\hline
+2026-02-27 & 2026-03-02 to 2026-03-06 \\
+\hline
+2026-03-06 & 2026-03-09 to 2026-03-13 \\
+\hline
+2026-03-13 & 2026-03-16 to 2026-03-20 \\
+\hline
+2026-03-20 & 2026-03-23 to 2026-03-27 \\
+\hline
+2026-03-27 & 2026-03-30 to 2026-04-03 \\
+\hline
+2026-04-10 & 2026-04-13 to 2026-04-17 \\
+\hline
+2026-04-17 & 2026-04-20 to 2026-04-24 \\
+\end{longtable}
+
+The final model's performance on this held-out test set was:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 10\tabcolsep - 6\arrayrulewidth) * \real{0.1900}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 10\tabcolsep - 6\arrayrulewidth) * \real{0.1620}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 10\tabcolsep - 6\arrayrulewidth) * \real{0.1620}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 10\tabcolsep - 6\arrayrulewidth) * \real{0.1620}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 10\tabcolsep - 6\arrayrulewidth) * \real{0.1620}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 10\tabcolsep - 6\arrayrulewidth) * \real{0.1620}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Model
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Mean test excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Median test excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Min test excess
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Negative test windows
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Wins versus baseline
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Final regime-gated ensemble & +4.001\% & +3.001\% & +0.907\% & 0 / 12
+& 12 / 12 \\
+\hline
+Original XGBoost baseline & +0.600\% & +0.264\% & -1.221\% & 5 / 12
+& 0 / 12 \\
+\end{longtable}
+
+This satisfies the self-test requirement that the reported test
+performance exceed the provided baseline. The final model improved mean
+test excess by +3.401 percentage points and had no negative excess test
+windows, while the baseline had five negative windows. The detailed
+window-by-window returns are shown in Section 3.2.
+
+\subsection{5.4 No-Leakage And Cache
+Controls}\label{no-leakage-and-cache-controls}
+
+We performed both dynamic and static checks.
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 6\tabcolsep - 4\arrayrulewidth) * \real{0.3333}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Check
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Purpose
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Result
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+Format validation & Verify stock count, positive weights, sum to one,
+max weight cap & Passed \\
+\hline
+Dynamic truncation audit & Compare full-data generation with physically
+truncated \code{date\ \textless{}=\ as\_of} data & Passed \\
+\hline
+Static code scan & Search active route files for
+\code{score\_submission}, report-cache, archive, and leakage-prone
+references & Reviewed \\
+\hline
+Regeneration check & Regenerate final
+\code{stage2\_final\_portfolio.csv} from script and compare & Exact
+match \\
+\hline
+py\_compile & Ensure active scripts import cleanly & Passed \\
+\end{longtable}
+
+The final dynamic leakage audit was rerun after the last folder cleanup.
+It passed on six representative as-of dates chosen to cover the major
+gate branches: weekly cycle, broad defensive tilt, weekly alpha, and the
+final baseline fallback.
+
+\begin{longtable}[]{@{}|
+  >{\Centering\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1429}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1429}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1905}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1905}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1905}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 12\tabcolsep - 7\arrayrulewidth) * \real{0.1429}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+As\_of
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Model
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Max absolute weight difference
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+L1 difference
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Changed names
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Pass
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+2026-01-09 & Final route & 0.0 & 0.0 & 0 & True \\
+\hline
+2026-02-27 & Final route & 0.0 & 0.0 & 0 & True \\
+\hline
+2026-03-13 & Final route & 0.0 & 0.0 & 0 & True \\
+\hline
+2026-03-27 & Final route & 0.0 & 0.0 & 0 & True \\
+\hline
+2026-04-10 & Final route & 0.0 & 0.0 & 0 & True \\
+\hline
+2026-05-08 & Final route & 0.0 & 0.0 & 0 & True \\
+\end{longtable}
+
+The active route trims stock and index data to
+\code{date\ \textless{}=\ as\_of} before feature construction. Target
+columns use forward shifts only for supervised training rows, and
+prediction rows do not use future targets. Optional cache arguments
+exist for speed during research, but the final reproduction path and
+leakage audit run with no cache directory; the final route regenerates
+live from the official data cache.
+
+\section{6. Reproducibility}\label{reproducibility}
+
+\subsection{6.1 Environment}\label{environment}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{conda}\NormalTok{ activate mlcomp{-}sp26}
+\ExtensionTok{pip}\NormalTok{ install }\AttributeTok{{-}r}\NormalTok{ requirements.txt}
+\end{Highlighting}
+\end{Shaded}
+
+Main package requirements:
+
+\begin{longtable}[]{@{}|>{\RaggedRight\arraybackslash}m{0.42\linewidth}|>{\Centering\arraybackslash}m{0.48\linewidth}|@{}}
+\hline\rowcolor{tableHead}
+\multicolumn{1}{|c|}{\textbf{Package}} & \multicolumn{1}{c|}{\textbf{Requirement}} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+pandas & \textgreater= 2.0 \\
+\hline
+numpy & \textgreater= 1.24, \textless{} 2.0 \\
+\hline
+xgboost & \textgreater= 2.0 \\
+\hline
+lightgbm & \textgreater= 4.6 \\
+\hline
+torch & \textgreater= 2.0 \\
+\hline
+scikit-learn & \textgreater= 1.3 \\
+\hline
+scipy & \textgreater= 1.11 \\
+\hline
+pyarrow & \textgreater= 14.0 \\
+\hline
+catboost & \textgreater= 1.2 \\
+\end{longtable}
+
+\subsection{6.2 Reproduce Final
+Portfolio}\label{reproduce-final-portfolio}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{python}\NormalTok{ stage2\_baseline\_guard\_ensemble.py }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}as{-}of}\NormalTok{ 20260508 }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}baseline{-}top{-}k}\NormalTok{ 0 }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}out}\NormalTok{ stage2\_final\_portfolio.csv }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}meta{-}out}\NormalTok{ stage2\_report/final\_report\_materials/01\_final\_portfolio\_metadata.csv}
+
+\ExtensionTok{python}\NormalTok{ validate\_submission.py stage2\_final\_portfolio.csv}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{6.3 Reproduce Full-Week
+Self-Test}\label{reproduce-full-week-self-test}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{python}\NormalTok{ tools/stage2\_validation/stage2\_backtest\_5day.py }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}models}\NormalTok{ baseline\_xgb baseline\_guard\_adaptive }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}full{-}week{-}only} \DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}windows}\NormalTok{ 12 }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}jobs}\NormalTok{ 4 }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}out{-}dir}\NormalTok{ stage2\_report/backtests/guard\_route\_v2\_nocache\_fullweek12\_20260510 }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}summary{-}out}\NormalTok{ stage2\_report/final\_report\_materials/02\_full\_week\_12\_window\_performance\_summary.csv }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}detail{-}out}\NormalTok{ stage2\_report/final\_report\_materials/03\_full\_week\_12\_window\_performance\_detail.csv}
+\end{Highlighting}
+\end{Shaded}
+
+The \texttt{stage2\_report/backtests/} folder stores the per-window
+portfolio CSVs generated by the final 12-window self-test, plus companion
+metadata CSVs for the adaptive route. The command above refreshes those
+portfolio records together with the retained summary/detail evidence files.
+
+\subsection{6.4 Reproduce Leakage Audit}\label{reproduce-leakage-audit}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{python}\NormalTok{ tools/stage2\_validation/stage2\_leakage\_audit.py }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}as{-}of}\NormalTok{ 20260109 20260227 20260313 20260327 20260410 20260508 }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}models}\NormalTok{ baseline\_guard\_adaptive }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}out}\NormalTok{ stage2\_report/final\_report\_materials/05\_final\_leakage\_audit\_dynamic.csv }\DataTypeTok{\textbackslash{}}
+  \AttributeTok{{-}{-}static{-}out}\NormalTok{ stage2\_report/final\_report\_materials/06\_final\_leakage\_audit\_static\_scan.csv}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{6.5 Final Consistency
+Checks}\label{final-consistency-checks}
+
+After removing the old draft report and consolidating the project
+layout, the final consistency check confirmed:
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|
+  >{\Centering\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+Check
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Result
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+\code{stage2\_final\_portfolio.csv} format validation & Passed \\
+\hline
+Data cache max date & 2026-05-08 \\
+\hline
+Final portfolio row count & 30 \\
+\hline
+Final portfolio weight sum & 1.000000000000 \\
+\hline
+Final portfolio max weight & 6.4516\% \\
+\hline
+Final effective number of names & 22.8689 \\
+\hline
+Regenerated final portfolio versus root CSV & Exact match, max
+difference 0 \\
+\hline
+Performance summary versus detail CSV & Matched \\
+\hline
+IC summary/detail versus score detail & Matched \\
+\hline
+Gate route table versus self-test windows & Matched \\
+\hline
+Dynamic leakage audit & 6 / 6 rows passed \\
+\end{longtable}
+
+\subsection{6.6 Report Evidence Files}\label{report-evidence-files}
+
+\begin{longtable}[]{@{}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|
+  >{\RaggedRight\arraybackslash}m{(\linewidth - 4\tabcolsep - 3\arrayrulewidth) * \real{0.5000}}|@{}}
+\hline\rowcolor{tableHead}
+\begin{minipage}[c]{\linewidth}\centering\bfseries
+File
+\end{minipage} & \begin{minipage}[c]{\linewidth}\centering\bfseries
+Purpose
+\end{minipage} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+\code{stage2\_report/final\_report\_materials/01\_final\_portfolio\_metadata.csv}
+& Final as-of route metadata and validation IC \\
+\hline
+\code{stage2\_report/final\_report\_materials/02\_full\_week\_12\_window\_performance\_summary.csv}
+& Aggregate self-test performance \\
+\hline
+\code{stage2\_report/final\_report\_materials/03\_full\_week\_12\_window\_performance\_detail.csv}
+& Per-window returns \\
+\hline
+\code{stage2\_report/final\_report\_materials/04\_final\_topk\_and\_weighting\_check.md}
+& Top-k and weight-shape sanity check \\
+\hline
+\code{stage2\_report/final\_report\_materials/05\_final\_leakage\_audit\_dynamic.csv}
+& Dynamic no-leak audit \\
+\hline
+\code{stage2\_report/final\_report\_materials/06\_final\_leakage\_audit\_static\_scan.csv}
+& Static leakage scan \\
+\hline
+\code{stage2\_report/final\_report\_materials/07\_stage2\_experiment\_history.md}
+& Chronological experiment log \\
+\hline
+\code{stage2\_report/final\_report\_materials/08\_full\_week\_12\_window\_ic\_detail.csv}
+& Per-window allocation IC \\
+\hline
+\code{stage2\_report/final\_report\_materials/09\_full\_week\_12\_window\_ic\_summary.csv}
+& Aggregate allocation IC \\
+\hline
+\code{stage2\_report/final\_report\_materials/10\_full\_week\_gate\_route\_detail.csv}
+& Route selected by the regime gate \\
+\hline
+\code{stage2\_report/backtests/}
+& Saved per-window portfolio CSVs and adaptive-route metadata from the final
+12-window self-test \\
+\hline
+\code{stage2\_report/backtests/README.md}
+& Explains how to regenerate the per-window portfolio records \\
+\end{longtable}
+
+\section{7. Conclusion}\label{conclusion}
+
+The final Stage2 system is a leakage-safe, walk-forward-tested,
+regime-gated stock-selection ensemble. The strongest lesson from the
+project was that robust portfolio performance came less from adding a
+more complex model and more from matching the validation window,
+controlling overfitting, separating score prediction from weight
+allocation, and routing among experts based only on as-of market state.
+
+The final adaptive route outperformed the original XGBoost baseline on
+every one of the 12 strict complete workweek self-test windows, with
++4.001\% mean excess versus +0.600\% for the baseline, and with zero
+negative excess windows. The final portfolio for 2026-05-08 is therefore
+a defensive branch selected by a broader ensemble, not a simple
+unmodified baseline submission.
+
+\end{document}
