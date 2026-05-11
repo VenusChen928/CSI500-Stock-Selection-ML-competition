@@ -1,2 +1,0 @@
-as_of,requested_mode,effective_mode,base_source,formula,alpha_top_k,alpha_power,confidence_penalty,base_weight,final_top_k,final_power,max_weight,n_names,max_actual_weight,idx_ret_3d,idx_ret_5d,idx_ret_20d,breadth_ret_3d_pos,breadth_ret_5d_pos
-2026-04-13,auto,stable,live:meta_portfolio_ensemble,vol_obv_amt,50,4.0,0.1,0.6,35,8.0,0.1,35,0.09999999999999998,0.002837453224626474,0.05743365107980991,-0.033022775558332884,0.37074148296593185,0.7955911823647295

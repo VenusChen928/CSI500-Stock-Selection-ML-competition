@@ -1,8 +1,0 @@
-model,submission,portfolio_return,benchmark_return,excess_return
-lstm_rank_weight_current_best,submissions/lstm_rank_weight_20260421.csv,0.02919,-0.008020000000000001,0.03722
-hybrid_lstm_xgb_current_best,submissions/hybrid_lstm_xgb_20260421.csv,0.02919,-0.008020000000000001,0.03722
-tuned_xgb_current,submissions/tuned_xgb_current_20260421.csv,0.00637,-0.008020000000000001,0.01439
-open_data_ranker,submissions/open_data_ranker_20260421.csv,0.0047599999999999995,-0.008020000000000001,0.01278
-open_data_regressor,submissions/open_data_regressor_20260421.csv,-0.00431,-0.008020000000000001,0.0037199999999999998
-lstm_open_rank_weight,submissions/lstm_open_rank_weight_20260421.csv,-0.023319999999999997,-0.008020000000000001,-0.01529
-baseline_current,submissions/baseline_current_20260421.csv,-0.02412,-0.008020000000000001,-0.0161

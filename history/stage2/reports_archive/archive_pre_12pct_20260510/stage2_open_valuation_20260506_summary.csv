@@ -1,4 +1,0 @@
-model,mean,sum,median,min,max,count,negative_windows
-open_lgb_valuation,0.011792,0.05896,0.00941,-0.00633,0.02481,5,1
-open_blend_valuation,0.010025999999999998,0.050129999999999994,0.01569,-0.00999,0.03008,5,2
-open_xgb_valuation,0.004106,0.02053,0.00975,-0.01385,0.01847,5,2

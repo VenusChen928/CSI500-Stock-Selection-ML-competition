@@ -3,7 +3,8 @@
 This repository is trimmed for the Stage2 submission.  The root directory keeps
 the complete model chain required to build the final portfolio, plus official
 download/scoring/format validation scripts.  Multi-window research utilities
-live under `tools/`, and historical experiments are archived under `history/`.
+live under `tools/`, while Stage1 and Stage2 report evidence are separated into
+their own report folders.
 
 ## Root
 
@@ -32,15 +33,12 @@ live under `tools/`, and historical experiments are archived under `history/`.
 - `stage2_final_portfolio.csv`: the only final Stage2 upload candidate.
 - `stage2_report/final_report_materials/`: final metadata, validation,
   leakage, performance, and portfolio-shape evidence for the written report.
+- `stage1_report/`: Stage1 final portfolios, scripts, and report evidence kept
+  out of the active Stage2 path.
 - `common/`: LightGBM/XGBoost helper scripts imported by the active tree
   consensus route.
 - `tools/stage2_validation/`: multi-window backtest and leakage-audit scripts
   used for final verification, kept out of the root model chain.
-- `history/common/`: data backups, old IDE config, old utilities, and generic
-  legacy reports.
-- `history/stage1/`: Stage1 scripts, submissions, and reports.
-- `history/stage2/`: Stage2 experiments, rejected scripts, old reports, and
-  old generated portfolios.
 
 ## Final Reproduction
 
@@ -54,5 +52,5 @@ python stage2_baseline_guard_ensemble.py \
 python validate_submission.py stage2_final_portfolio.csv
 ```
 
-`stage2_final_portfolio.csv` is the only active portfolio CSV.  Older duplicates
-are archived under `history/stage2/submissions/final_duplicate_portfolios_20260510/`.
+`stage2_final_portfolio.csv` is the only active Stage2 portfolio CSV at the
+repository root.

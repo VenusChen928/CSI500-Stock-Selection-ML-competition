@@ -1,5 +1,0 @@
-file,rows,cols,date_min,date_max,n_dates,missing_notes,recommended_use
-market_pb.parquet,5171,8,2005-01-04,2026-04-30,5171,"0 missing in inspected columns","market valuation regime"
-qvix_500etf.parquet,2718,5,2015-02-09,2026-04-30,2718,"open/high/low/close about 68.1% missing","only if forward-filled and coverage-tested"
-stock_fund_flow.parquet,59880,14,2025-09-26,2026-04-30,140,"0 missing but short history","recent flow gate/filter, not long-history core model"
-stock_value_em.parquet,396542,14,2023-01-03,2026-04-30,804,"very low missingness; ps about 0.036% missing","valuation/size/risk feature group"

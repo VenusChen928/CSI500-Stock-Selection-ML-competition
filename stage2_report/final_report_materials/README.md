@@ -21,6 +21,3 @@ It is intentionally small and ordered by report-writing flow.
   references.
 - `07_stage2_experiment_history.md`: chronological optimization log, rejected
   directions, window-definition correction, and final decision trail.
-
-Older redundant checks are archived in
-`history/stage2/reports_archive/redundant_final_checks_20260510/`.

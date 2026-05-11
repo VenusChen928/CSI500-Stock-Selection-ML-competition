@@ -1,2 +1,0 @@
-route,reason,idx_ret_5d,idx_ret_20d,breadth_ret_5d_pos,median_ret_5d,final_route,route_reason,factor_route_factor,factor_route_direction,factor_route_top_k,factor_route_rank_power,n_names,max_weight
-equal_universe,weak_short_tape_low_breadth_avoid_active_selection_noise,-0.03443052740386576,-0.01849153594401798,0.24649298597194388,-0.03388525221409311,factor_route,factor_turnover_ma_20d_low,turnover_ma_20d,low,40,0.7,40,0.04163229636358166

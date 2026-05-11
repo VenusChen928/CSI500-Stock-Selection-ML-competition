@@ -9,5 +9,6 @@ artifacts.  The actual portfolio to upload is the root-level
 - `final_report_materials/`: final score summaries, leakage audits, top-k
   sanity check, metadata, and report-writing index.
 
-Old candidate portfolios, rejected variants, and large backtest output folders
-were moved to `history/stage2/`.
+Rejected variants and large transient backtest folders were removed from the
+clean submission layout; the retained report evidence is in
+`final_report_materials/`.

@@ -1,2 +1,0 @@
-route,reason,idx_ret_5d,idx_ret_20d,breadth_ret_5d_pos,median_ret_5d,final_route,route_reason,lstm_top_k,lstm_temperature,lstm_rank_blend,n_names,max_weight
-tree_consensus,normal_tree_consensus,-0.09094602030603705,-0.1034798727888201,0.056112224448897796,-0.08967971530249119,lstm_rank_weight,lstm_capitulation_reversal,80,0.45,0.9,80,0.1

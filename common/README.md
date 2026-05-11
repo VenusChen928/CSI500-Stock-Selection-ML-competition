@@ -9,4 +9,4 @@ still imported by active Stage2 scripts.
   `stage2_tree_consensus.py`.
 
 Generic historical tools that are no longer needed by the active route were
-moved to `history/common/legacy_unused_20260510/`.
+removed from the clean submission layout.

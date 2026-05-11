@@ -1,2 +1,0 @@
-as_of,requested_mode,effective_mode,base_source,formula,alpha_top_k,alpha_power,confidence_penalty,base_weight,final_top_k,final_power,max_weight,n_names,max_actual_weight,idx_ret_3d,idx_ret_5d,idx_ret_20d,breadth_ret_3d_pos,breadth_ret_5d_pos
-2026-04-10,floor,floor,cache:/Users/venus/Desktop/ml-competition-sp26/submissions/stage2/backtests/full_week/stage2_fullweek_meta_12w_20260510/meta_portfolio_ensemble_20260410.csv,gap_flow,30,6.0,0.1,0.7,50,4.0,0.1,50,0.09517766739029612,0.052601791203431114,0.04787087098419485,-0.04666646410203901,0.8534136546184738,0.7329317269076305

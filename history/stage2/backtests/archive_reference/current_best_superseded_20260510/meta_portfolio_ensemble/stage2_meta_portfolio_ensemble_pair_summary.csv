@@ -1,3 +1,0 @@
-as_of,csv,meta,n_names,max_weight,final_route,start,end,portfolio_return,benchmark_return,excess_return
-2026-04-28,submissions/stage2/current_best/stage2_meta_portfolio_ensemble_20260428.csv,submissions/stage2/current_best/stage2_meta_portfolio_ensemble_20260428_meta.csv,30,0.10000000018163206,meta_portfolio_ensemble,2026-04-29,2026-05-08,0.16284080447156987,0.05975284377875534,0.10308796069281453
-2026-05-08,submissions/stage2/current_best/stage2_meta_portfolio_ensemble_20260508.csv,submissions/stage2/current_best/stage2_meta_portfolio_ensemble_20260508_meta.csv,30,0.10000000018163206,meta_portfolio_ensemble,,,,,

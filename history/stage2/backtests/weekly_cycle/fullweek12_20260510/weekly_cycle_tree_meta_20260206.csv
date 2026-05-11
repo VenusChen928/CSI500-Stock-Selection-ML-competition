@@ -1,2 +1,0 @@
-as_of,model,top_k,score_temperature,rank_power,score_rank_blend,max_weight,corr_threshold,half_life_days,fullweek_boost,model_set,alpha_blend,base_models,train_rows,features,n_names,max_observed_weight,effective_n
-2026-02-06,stage2_weekly_cycle_tree,40,0.8,3.0,0.6,0.08,0.9,180.0,0.2,lgb_xgb,0.25,lgb|xgb,305789,64,40,0.08,21.5647040291888

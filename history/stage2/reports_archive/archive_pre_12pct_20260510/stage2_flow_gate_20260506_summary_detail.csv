@@ -1,6 +1,0 @@
-model,as_of,start,end,submission,status,error,portfolio_return,benchmark_return,excess_return,n_names
-baseline_flow_gate,2026-03-26,2026-03-27,2026-04-02,submissions/stage2/backtests/candidates/stage2_flow_gate_20260506/baseline_flow_gate_20260326.csv,ok,,-0.00809,-0.00482,-0.0032700000000000003,50
-baseline_flow_gate,2026-04-02,2026-04-03,2026-04-10,submissions/stage2/backtests/candidates/stage2_flow_gate_20260506/baseline_flow_gate_20260402.csv,ok,,0.04332,0.047869999999999996,-0.00455,32
-baseline_flow_gate,2026-04-10,2026-04-13,2026-04-17,submissions/stage2/backtests/candidates/stage2_flow_gate_20260506/baseline_flow_gate_20260410.csv,ok,,0.0484,0.03072,0.01768,43
-baseline_flow_gate,2026-04-17,2026-04-20,2026-04-24,submissions/stage2/backtests/candidates/stage2_flow_gate_20260506/baseline_flow_gate_20260417.csv,ok,,0.0158,0.0040999999999999995,0.011699999999999999,50
-baseline_flow_gate,2026-04-24,2026-04-27,2026-05-06,submissions/stage2/backtests/candidates/stage2_flow_gate_20260506/baseline_flow_gate_20260424.csv,ok,,0.08027,0.04128999999999999,0.03898,40

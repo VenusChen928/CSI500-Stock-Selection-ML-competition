@@ -1,2 +1,0 @@
-model,mean,sum,median,min,max,count,negative_windows
-layered_lstm,0.009148,0.04574,0.00013,-0.01,0.05516,5,2

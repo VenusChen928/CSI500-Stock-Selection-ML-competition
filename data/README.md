@@ -20,5 +20,5 @@ python download_data.py --update --end YYYYMMDD
 For the final Stage2 candidate here, the data cache was checked through
 `2026-05-08`.
 
-Do not place noisy exploratory open-data files here.  Old external-data trials
-were archived under `history/common/data_unused/`.
+Do not place noisy exploratory open-data files here.  The final Stage2 route
+uses only the official competition data cache in this directory.

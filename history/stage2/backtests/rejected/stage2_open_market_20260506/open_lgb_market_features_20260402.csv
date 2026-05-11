@@ -1,8 +1,0 @@
-group,feature,coverage_before_fill,missing_before_fill,std_after_fill,selected,drop_reason
-market_regime,od_mkt_middle_pb_z252,1.0,0.0,0.4529450542711941,True,
-market_regime,od_mkt_pb_quantile,1.0,0.0,0.002178294221939848,True,
-market_regime,od_mkt_pb_slope_20d,1.0,0.0,0.06219190461331366,True,
-market_regime,od_market_available,1.0,0.0,0.0,False,near_zero_variance
-market_regime,od_market_lag_days,1.0,0.0,0.0,False,near_zero_variance
-market_regime,od_mkt_equal_pb_quantile,1.0,0.0,0.002136831166718687,False,corr_with:od_mkt_pb_quantile:0.985
-market_regime,od_mkt_equal_pb_z252,1.0,0.0,0.39049035202853116,False,corr_with:od_mkt_middle_pb_z252:0.976

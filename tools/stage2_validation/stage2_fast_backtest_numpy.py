@@ -128,12 +128,11 @@ def run_one(
     start: pd.Timestamp,
     end: pd.Timestamp,
     out_dir: Path,
-    open_dir: Path,
     skip_existing: bool,
     timeout: int,
     scorer: NumpyScorer,
 ) -> dict:
-    commands = model_commands(as_of, out_dir, open_dir)
+    commands = model_commands(as_of, out_dir)
     if model not in commands:
         raise ValueError(f"Unknown model {model}. Valid: {sorted(commands)}")
     cmd, submission_path = commands[model]
@@ -187,12 +186,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--prices", default=str(ROOT / "data" / "prices.parquet"))
     parser.add_argument("--index", default=str(ROOT / "data" / "index.parquet"))
-    parser.add_argument("--models", nargs="+", default=["weekly_consensus"])
+    parser.add_argument("--models", nargs="+", default=["baseline_xgb", "baseline_guard_adaptive"])
     parser.add_argument("--windows", type=int, default=12)
     parser.add_argument("--step", type=int, default=1)
     parser.add_argument("--as-of", nargs="*", default=None)
     parser.add_argument("--full-week-only", action="store_true")
-    parser.add_argument("--open-dir", default=str(ROOT / "history" / "common" / "data_unused" / "open"))
     parser.add_argument("--out-dir", default=str(ROOT / "stage2_report" / "backtests" / "fast_numpy"))
     parser.add_argument("--summary-out", default=str(ROOT / "stage2_report" / "final_report_materials" / "stage2_fast_numpy_summary.csv"))
     parser.add_argument("--skip-existing", action="store_true")
@@ -214,10 +212,6 @@ def main() -> int:
     if not out_dir.is_absolute():
         out_dir = ROOT / out_dir
     out_dir.mkdir(parents=True, exist_ok=True)
-    open_dir = Path(args.open_dir)
-    if not open_dir.is_absolute():
-        open_dir = ROOT / open_dir
-
     scorer = NumpyScorer(Path(args.prices), Path(args.index), windows)
     jobs = [
         {
@@ -226,7 +220,6 @@ def main() -> int:
             "start": start,
             "end": end,
             "out_dir": out_dir,
-            "open_dir": open_dir,
             "skip_existing": args.skip_existing,
             "timeout": args.timeout,
             "scorer": scorer,

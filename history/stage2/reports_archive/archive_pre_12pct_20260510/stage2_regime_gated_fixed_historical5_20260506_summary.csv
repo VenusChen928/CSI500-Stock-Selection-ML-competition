@@ -1,2 +1,0 @@
-model,mean,sum,median,min,max,count,negative_windows
-regime_gated_lstm,0.017732,0.08866,0.01782,0.00254,0.02722,5,0

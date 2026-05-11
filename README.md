@@ -8,8 +8,8 @@ Upload exactly this file:
 stage2_final_portfolio.csv
 ```
 
-All duplicate portfolio CSVs were moved to `history/` so the final upload file
-is unambiguous.
+Stage1 and Stage2 materials are separated so the final upload file is
+unambiguous.
 
 ## Environment
 
@@ -104,8 +104,6 @@ python tools/stage2_validation/stage2_backtest_5day.py \
   --summary-out stage2_report/final_report_materials/02_full_week_12_window_performance_summary.csv
 ```
 
-Historical reports are archived under `history/stage2/reports_archive/`.
-
 ## Report Materials
 
 The final write-up materials are organized in:
@@ -116,3 +114,6 @@ stage2_report/final_report_materials/
 
 Start with `00_stage2_final_report_summary.md` for the main narrative and
 `07_stage2_experiment_history.md` for the detailed experiment trail.
+
+Stage1 materials are archived separately in `stage1_report/` and are not part
+of the Stage2 submission path.

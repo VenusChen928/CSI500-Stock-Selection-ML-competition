@@ -1,2 +1,0 @@
-as_of,model,source_mode,candidate_count,top_k,rank_power,current_votes,n_names,max_weight,aggregate_top10,sources
-2026-05-08,stage2_multiroute_consensus,live,15,30,128.0,5,30,0.1,002624 | 688819 | 688676 | 688347 | 300604 | 688172 | 002080 | 300136 | 603699 | 688361,live:stage2_meta_portfolio_ensemble | live:hybrid_default | live:factor_ic_dampen | live:factor_ic_filter | live:quality_features | live:core_features | live:alpha_no_secondary | live:alpha_no_liquidity | live:alpha_no_final | live:alpha_no_route | live:tree_top40

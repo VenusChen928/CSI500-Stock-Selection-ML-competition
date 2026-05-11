@@ -1,4 +1,0 @@
-model,mean,sum,median,min,max,count,negative_windows
-weekly_consensus,0.026872499999999997,0.32247,0.01191,-0.0138,0.12493,12,2
-weekly_alpha_auto,0.0243525,0.29223,0.020085,-0.01279,0.13104,12,4
-meta_portfolio_ensemble,0.01764,0.21168,0.016774999999999998,-0.03009,0.06872,12,2

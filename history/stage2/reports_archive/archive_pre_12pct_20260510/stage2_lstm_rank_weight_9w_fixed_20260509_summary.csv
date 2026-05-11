@@ -1,2 +1,0 @@
-model,mean,sum,median,min,max,count,negative_windows
-lstm_rank_weight,0.0041355555555555555,0.037219999999999996,0.00083,-0.02377,0.045149999999999996,9,4

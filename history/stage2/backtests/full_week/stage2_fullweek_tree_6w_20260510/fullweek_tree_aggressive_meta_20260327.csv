@@ -1,2 +1,0 @@
-as_of,model,model_type,feature_set,top_k,rank_power,score_blend,max_weight,corr_threshold,half_life_weeks,n_names,max_observed_weight,effective_n,train_rows,features,base_models
-2026-03-27,stage2_fullweek_tree_portfolio,blend,all,30,4.0,0.25,0.1,0.94,52.0,30,0.1,14.191698429980377,69456,48,lgb|xgb

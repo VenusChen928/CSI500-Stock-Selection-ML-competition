@@ -1,6 +1,0 @@
-model,as_of,start,end,submission,status,error,portfolio_return,benchmark_return,excess_return,n_names
-enhanced_lgb_stock,2026-03-24,2026-03-25,2026-03-31,submissions/stage2/backtests/rejected/stage2_enhanced_stock_historical5_20260506/enhanced_lgb_stock_20260324.csv,ok,,-0.020099999999999996,0.00263,-0.022719999999999997,45
-enhanced_lgb_stock,2026-03-31,2026-04-01,2026-04-08,submissions/stage2/backtests/rejected/stage2_enhanced_stock_historical5_20260506/enhanced_lgb_stock_20260331.csv,ok,,0.04173,0.04304,-0.00131,40
-enhanced_lgb_stock,2026-04-08,2026-04-09,2026-04-15,submissions/stage2/backtests/rejected/stage2_enhanced_stock_historical5_20260506/enhanced_lgb_stock_20260408.csv,ok,,0.02024,0.012450000000000001,0.00779,100
-enhanced_lgb_stock,2026-04-15,2026-04-16,2026-04-22,submissions/stage2/backtests/rejected/stage2_enhanced_stock_historical5_20260506/enhanced_lgb_stock_20260415.csv,ok,,0.05943,0.04128999999999999,0.01814,100
-enhanced_lgb_stock,2026-04-21,2026-04-22,2026-04-28,submissions/stage2/backtests/rejected/stage2_enhanced_stock_historical5_20260506/enhanced_lgb_stock_20260421.csv,ok,,-0.00362,-0.008020000000000001,0.0044,100
