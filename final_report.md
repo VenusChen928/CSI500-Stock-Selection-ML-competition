@@ -24,6 +24,17 @@ On the final strict self-test of 12 complete Monday-Friday five-day windows, the
 
 The final route improved both the average excess return and the downside floor relative to the original baseline.  The final report intentionally presents failed attempts as well, because many high-looking experiments were later rejected after stricter window definition and leakage checks.
 
+The logic of the final method is:
+
+| step | decision | why it comes next |
+|---|---|---|
+| scoring analysis | model outputs weights, while `score_submission.py` computes realized excess return | separates prediction from evaluation |
+| factor design | build lagged price, liquidity, risk, market-relative, and weekly-cycle signals | defines what the model is allowed to know at as-of |
+| model search | test XGBoost, LightGBM, CatBoost, LSTM, direct rank/weight learning, and hybrids | identifies which learners are stable versus regime-sensitive |
+| validation correction | switch from generic five-trading-day windows to complete Monday-Friday self-test windows | aligns the model-selection test with the Stage2 objective |
+| final route | use an as-of regime gate to choose among experts | avoids forcing one model into every market state |
+| portfolio shape | choose top-k and weight concentration conditional on the selected route | converts scores into a compliant, risk-controlled submission |
+
 ## 1. Factors
 
 ### 1.1 Prediction Target And Scoring Definition
@@ -292,7 +303,7 @@ This does not mean the final project is simply the unchanged baseline.  It means
 
 ### 2.8 Portfolio Construction And Weighting
 
-The portfolio layer was tuned separately from the prediction layer.  The final portfolio is not equal-weighted.
+The portfolio layer was tuned separately from the prediction layer.  This is important because a model can rank stocks reasonably but still lose excess return if the final portfolio is too diluted, too concentrated, or too equal-weighted.  The final portfolio is not equal-weighted.
 
 | metric | final value |
 |---|---:|
@@ -319,7 +330,16 @@ The final top holdings are:
 | 9 | 300454 | 4.731% |
 | 10 | 601615 | 4.516% |
 
-We tested whether 30 names was too few.  In similar baseline-guard windows, top30 had the best mean and best minimum among top30/top35/top40/top50/top60 choices:
+The table below is a **portfolio-shape sanity check**, not the main 12-window model comparison.  Its purpose was narrower: after the final 2026-05-08 regime gate selected the `baseline_xgb` fallback, we needed to decide whether that fallback branch should hold the minimum 30 names or dilute into more stocks.  To avoid tuning on the final unknown window, I only used historical windows where the same final gate also routed into the baseline-style fallback, then rescored the same fallback idea with `top_k` set to 30, 35, 40, 50, and 60.
+
+The two historical windows used for this check were:
+
+| as_of | evaluation window | gate reason |
+|---|---|---|
+| 2026-01-23 | 2026-01-26 to 2026-01-30 | overheated high breadth |
+| 2026-03-20 | 2026-03-23 to 2026-03-27 | severe broad selloff |
+
+Across only those two baseline-routed sanity-check windows, top30 had the best mean and best minimum:
 
 | top_k | mean excess | min excess |
 |---:|---:|---:|
@@ -329,7 +349,7 @@ We tested whether 30 names was too few.  In similar baseline-guard windows, top3
 | 50 | +1.268% | -0.380% |
 | 60 | +1.072% | -0.551% |
 
-For the final overheated high-breadth regime, larger portfolios diluted the rank signal and lowered the floor.  The final top30 shape stayed below the 10% cap while preserving enough conviction.
+The causal use of this table is therefore limited but clear: it did not decide the overall model, and it was not used to claim that 30 names is globally optimal for all regimes.  It only supported the final fallback-branch portfolio shape.  In the closest available baseline-routed regimes, larger portfolios diluted the XGBoost rank signal and lowered the floor.  Since the final top30 shape stayed below the 10% cap and had 22.87 effective names, I kept top30 for the final overheated high-breadth fallback.
 
 ## 3. Results And Self-Test
 
@@ -517,7 +537,7 @@ Several ideas looked promising but were not promoted:
 | noisy external data | strict cleaning did not improve mean and floor together |
 | graph/peer factors | group influence signals were not robust enough in held-out windows |
 | blind feature expansion | improved single windows but hurt minimum excess |
-| overly broad top-k portfolios | diluted rank signal in the final fallback regime |
+| overly broad top-k portfolios | diluted rank signal in the final fallback branch sanity check |
 | old generic five-day validation | overstated performance by mixing weekend/holiday effects |
 
 The Phase 1 result was also a useful warning.  The Stage1 model had a reasonable local backtest but underperformed the class average in the official 2026-05-06 to 2026-05-08 window.  That pushed the Stage2 design toward simpler, better-regularized models and stricter self-tests.

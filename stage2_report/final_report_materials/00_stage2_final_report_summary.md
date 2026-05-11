@@ -193,9 +193,13 @@ portfolio layer:
 | top-5 weight | 30.11% | allows conviction |
 | top-10 weight | 54.84% | more aggressive than broad diversification |
 
-We explicitly swept top30/top35/top40/top50/top60 on similar baseline-guard
-windows.  Top30 had the best mean and minimum excess among those checks, so the
-final route did not dilute the signal into a larger stock set.
+The top-k table in `04_final_topk_and_weighting_check.md` is a narrow
+portfolio-shape sanity check, not the main 12-window model comparison.  It only
+asks: after the final as-of gate has already selected the `baseline_xgb`
+fallback, should that fallback hold 30 names or dilute into more names?  On two
+historical baseline-routed windows, top30 had the best mean and minimum excess
+among top30/top35/top40/top50/top60, so the final fallback did not dilute the
+rank signal into a larger stock set.
 
 ## 10. Validation Results
 

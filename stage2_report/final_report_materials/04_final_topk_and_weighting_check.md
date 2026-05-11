@@ -7,6 +7,12 @@ Conclusion: keep 30 names.  The final as-of regime is
 routes, but the historical windows where the guard also falls back to
 `baseline_xgb`.
 
+Scope note: this is a narrow portfolio-shape sanity check for the final
+fallback branch, not the main 12-window model comparison and not a claim that
+top30 is globally optimal for every regime.  The table only supports the final
+choice to avoid diluting the `baseline_xgb` rank signal after the as-of gate had
+already selected that fallback branch.
+
 ## Similar Historical Baseline-Guard Windows
 
 | as_of | window | reason | top30 | top35 | top40 | top50 | top60 |
