@@ -15,9 +15,9 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent
-LEGACY = ROOT / "common" / "legacy_scripts"
-if str(LEGACY) not in sys.path:
-    sys.path.insert(0, str(LEGACY))
+STAGE2_SCRIPTS = ROOT / "stage2_report" / "scripts"
+if str(STAGE2_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(STAGE2_SCRIPTS))
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 

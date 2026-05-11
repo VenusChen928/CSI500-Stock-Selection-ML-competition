@@ -137,7 +137,7 @@ a mixture-of-experts route selector, not a simple average of all models.
 | expert | implementation | role |
 |---|---|---|
 | official-style XGBoost baseline | `baseline_xgboost.py` and fallback inside `stage2_baseline_guard_ensemble.py` | stable defensive route |
-| LightGBM/XGBoost tree consensus | `stage2_tree_consensus.py` plus helper scripts in `common/legacy_scripts/` | two-model tabular consensus |
+| LightGBM/XGBoost tree consensus | `stage2_tree_consensus.py` plus helper scripts in `stage2_report/scripts/` | two-model tabular consensus |
 | weekly alpha overlay | `stage2_weekly_alpha_overlay.py` | combines base portfolio with flow/volatility/OBV style weekly alpha |
 | weekly consensus | `stage2_weekly_consensus_ensemble.py` | aggregates weekly alpha and weekly cycle tree |
 | weekly cycle tree | `stage2_weekly_cycle_tree.py` | learns full-week excess-return features including calendar cycle terms |

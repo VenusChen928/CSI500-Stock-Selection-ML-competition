@@ -33,10 +33,10 @@ their own report folders.
 - `stage2_final_portfolio.csv`: the only final Stage2 upload candidate.
 - `stage2_report/final_report_materials/`: final metadata, validation,
   leakage, performance, and portfolio-shape evidence for the written report.
-- `stage1_report/`: Stage1 final portfolios, scripts, and report evidence kept
+- `stage2_report/scripts/`: Stage2 helper scripts imported by active root
+  routes, currently the LightGBM and tuned-XGBoost tree helpers.
+- `stage1_report/`: Stage1 final portfolio, scripts, and report evidence kept
   out of the active Stage2 path.
-- `common/`: LightGBM/XGBoost helper scripts imported by the active tree
-  consensus route.
 - `tools/stage2_validation/`: multi-window backtest and leakage-audit scripts
   used for final verification, kept out of the root model chain.
 

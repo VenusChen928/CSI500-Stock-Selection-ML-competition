@@ -33,7 +33,8 @@ from tuned_xgboost_portfolio import (
     time_decay_weights,
 )
 
-DATA_DIR = Path(__file__).parent / "data"
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DATA_DIR = PROJECT_ROOT / "data"
 
 
 def train_model(

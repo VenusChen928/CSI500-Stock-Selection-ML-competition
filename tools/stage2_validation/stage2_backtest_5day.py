@@ -22,7 +22,7 @@ FORWARD_HORIZON = 5
 
 def _env() -> dict[str, str]:
     env = os.environ.copy()
-    env["PYTHONPATH"] = f"{ROOT}:{ROOT / 'common' / 'legacy_scripts'}:{env.get('PYTHONPATH', '')}"
+    env["PYTHONPATH"] = f"{ROOT}:{ROOT / 'stage2_report' / 'scripts'}:{env.get('PYTHONPATH', '')}"
     env["DYLD_FALLBACK_LIBRARY_PATH"] = "/opt/homebrew/opt/libomp/lib:/opt/homebrew/opt/openssl@3/lib"
     env["MLCOMP_DEVICE"] = "cpu"
     for key in [

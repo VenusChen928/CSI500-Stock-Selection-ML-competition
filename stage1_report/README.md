@@ -6,22 +6,21 @@ are retained only for report traceability and comparison.
 
 ## Layout
 
-- `final_portfolios/`: retained Stage1 final/candidate portfolios.
+- `stage1_final_portfolio.csv`: the single retained Stage1 submission CSV.
 - `scripts/`: reproducible Stage1 model routes that were discussed in the
   report trail.
 - `report_materials/`: compact CSV evidence used to summarize Stage1
   experiments.
 
-## Reproduce A Stage1 Candidate
+## Validate Stage1 Final Submission
 
 Run from the repository root:
 
 ```bash
-python stage1_report/scripts/stage1_guarded_ensemble.py \
-  --as-of 20260430 \
-  --horizon 3 \
-  --out stage1_report/generated/stage1_guarded_ensemble_20260430.csv
-python validate_submission.py stage1_report/final_portfolios/stage1_guarded_ensemble_20260430.csv
+python validate_submission.py stage1_report/stage1_final_portfolio.csv
 ```
+
+The scripts are retained only to explain the Stage1 experiment path; the
+retained Stage1 submission itself is the single CSV above.
 
 Stage1 files are intentionally not used by the final Stage2 portfolio builder.
