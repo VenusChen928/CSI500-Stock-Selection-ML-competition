@@ -8,10 +8,10 @@ Upload exactly this file:
 stage2_final_portfolio.csv
 ```
 
-The final written report is:
+The final written report source is:
 
 ```text
-CSI500_Final_Report.docx
+final_report.md
 ```
 
 Stage1 and Stage2 materials are separated so the final upload file is
@@ -112,19 +112,14 @@ python tools/stage2_validation/stage2_backtest_5day.py \
 
 ## Report Materials
 
-The polished final DOCX is in the repository root:
-
-```text
-CSI500_Final_Report.docx
-```
-
 The final write-up materials are organized in:
 
 ```text
 stage2_report/final_report_materials/
 ```
 
-Start with `00_stage2_final_report_summary.md` for the main narrative and
+Start with root-level `final_report.md` for the complete report source,
+`00_stage2_final_report_summary.md` for the compact narrative, and
 `07_stage2_experiment_history.md` for the detailed experiment trail.
 
 Stage1 materials are archived separately in `stage1_report/` and are not part

@@ -225,9 +225,10 @@ The final pipeline includes several self-tests.
 | py_compile check | ensures active model and validation scripts import cleanly | passed |
 | canonical score script | scores all backtest portfolios using `score_submission.py` logic | used for final tables |
 
-The dynamic leakage audit passed for representative historical and final dates
-with `max_abs_diff = 0`, `l1_diff = 0`, and `changed_names = 0`.  The active
-route trims stock and index data to `date <= as_of` before feature construction.
+The final dynamic leakage audit was rerun after cleanup on six representative
+historical and final dates, with `max_abs_diff = 0`, `l1_diff = 0`, and
+`changed_names = 0` for every row.  The active route trims stock and index data
+to `date <= as_of` before feature construction.
 
 ## 12. Main Lessons
 

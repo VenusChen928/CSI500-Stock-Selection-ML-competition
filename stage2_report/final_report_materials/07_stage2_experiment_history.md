@@ -165,7 +165,8 @@ Before treating a route as final, we require:
 
 | file | use |
 |---|---|
-| `00_stage2_final_report_summary.md` | main report narrative |
+| `final_report.md` | expanded final written report source in the repository root |
+| `00_stage2_final_report_summary.md` | compact report narrative companion |
 | `01_final_portfolio_metadata.csv` | final route and as-of regime metadata |
 | `02_full_week_12_window_performance_summary.csv` | aggregate result table |
 | `03_full_week_12_window_performance_detail.csv` | per-window evidence |

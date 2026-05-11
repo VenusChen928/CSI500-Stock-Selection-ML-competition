@@ -5,8 +5,8 @@ It is intentionally small and ordered by report-writing flow.
 
 ## Files
 
-- `00_stage2_final_report_summary.md`: full Stage2 report narrative, including
-  objective, data, features, models, validation, final route, and self-tests.
+- `00_stage2_final_report_summary.md`: compact Stage2 report narrative kept as
+  a concise companion to root-level `final_report.md`.
 - `01_final_portfolio_metadata.csv`: final portfolio route and training
   metadata for `stage2_final_portfolio.csv`.
 - `02_full_week_12_window_performance_summary.csv`: aggregate 12-window
@@ -21,3 +21,16 @@ It is intentionally small and ordered by report-writing flow.
   references.
 - `07_stage2_experiment_history.md`: chronological optimization log, rejected
   directions, window-definition correction, and final decision trail.
+- `08_full_week_12_window_ic_detail.csv`: per-window allocation IC diagnostics
+  used in the expanded final report.
+- `09_full_week_12_window_ic_summary.csv`: aggregate allocation IC summary.
+- `10_full_week_gate_route_detail.csv`: as-of regime gate route selected for
+  each complete full-week self-test window.
+
+The root-level `final_report.md` is the expanded Markdown report source that
+combines these materials into the final narrative.
+
+Large per-window generated portfolio CSVs are intentionally not retained in
+this clean submission layout.  Files such as
+`03_full_week_12_window_performance_detail.csv` preserve the numeric results
+and the transient generation names for traceability.
